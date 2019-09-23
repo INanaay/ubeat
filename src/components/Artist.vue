@@ -90,7 +90,7 @@
 <style>
 #background-image {
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
   object-position: 10% 10%;
   -webkit-mask-image: -webkit-gradient(
@@ -220,7 +220,6 @@ a {
 
   a {
     font-size: 10px;
-
   }
 }
 </style>
