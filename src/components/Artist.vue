@@ -90,7 +90,7 @@
 <style>
 #background-image {
   width: 100%;
-  height: 250px;
+  height: 300px;
   object-fit: cover;
   object-position: 10% 10%;
   -webkit-mask-image: -webkit-gradient(
@@ -107,10 +107,10 @@ body {
   height: 100%;
   margin: 0px;
   padding: 0px;
+  background-color: #1b1b1b;
 }
 
 div {
-  background-color: #1b1b1b;
   font-family: "Poppins", sans-serif;
 }
 
@@ -123,7 +123,7 @@ span {
 a {
   color: white;
   font-weight: bold;
-  font-size: 26px;
+  font-size: 2px;
 }
 
 #container {
