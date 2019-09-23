@@ -405,6 +405,7 @@
 .album_infos_text {
   font-family: "Poppins", sans-serif;
   color: white;
+  font-size: 18px;
 }
 
 .header {
