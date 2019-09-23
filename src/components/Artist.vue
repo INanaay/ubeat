@@ -19,7 +19,7 @@
     <div>
       <h1 id="albums-title">Albums</h1>
       <div id="albums-container">
-        <div class="album">
+        <div class="album-artist">
           <img
             class="album-cover"
             src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
@@ -27,7 +27,7 @@
           <a>Californication</a>
         </div>
 
-        <div class="album">
+        <div class="album-artist">
           <img
             class="album-cover"
             src="https://upload.wikimedia.org/wikipedia/en/2/23/Rhcp9.jpg"
@@ -35,7 +35,7 @@
           <a>By The Way</a>
         </div>
 
-        <div class="album">
+        <div class="album-artist">
           <img
             class="album-cover"
             src="https://images-na.ssl-images-amazon.com/images/I/81hS2wgxbhL._SY355_PJautoripBadge,BottomRight,4,-40_OU11__.jpg"
@@ -43,7 +43,7 @@
           <a>Blood Sugar Sex Magik</a>
         </div>
 
-        <div class="album">
+        <div class="album-artist">
           <img
             class="album-cover"
             src="https://images-na.ssl-images-amazon.com/images/I/81lOFvmn6tL._SL1500_.jpg"
@@ -51,7 +51,7 @@
           <a>Stadium Arcadium</a>
         </div>
 
-        <div class="album">
+        <div class="album-artist">
           <img
             class="album-cover"
             src="https://images-na.ssl-images-amazon.com/images/I/81CGfXRJkUL._SL1500_.jpg"
@@ -59,7 +59,7 @@
           <a>The Getaway</a>
         </div>
 
-        <div class="album">
+        <div class="album-artist">
           <img
             class="album-cover"
             src="https://m.media-amazon.com/images/I/81pAOO4ouyL._SS500_.jpg"
@@ -67,7 +67,7 @@
           <a>One Hot Minute</a>
         </div>
 
-        <div class="album">
+        <div class="album-artist">
           <img
             class="album-cover"
             src="https://images-na.ssl-images-amazon.com/images/I/91OMG4YkWML._SY355_.jpg"
@@ -75,7 +75,7 @@
           <a>The Uplift Mofo Party Plan</a>
         </div>
 
-        <div class="album">
+        <div class="album-artist">
           <img
             class="album-cover"
             src="https://upload.wikimedia.org/wikipedia/en/9/98/Mother%27sMilkAlbumcover.jpg"
@@ -150,7 +150,7 @@ a {
   margin-bottom: 10px;
 }
 
-.album {
+.album-artist {
   display: flex;
   flex-direction: column;
   justify-content: center;
