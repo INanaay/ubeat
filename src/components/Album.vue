@@ -363,7 +363,6 @@
         </ul>
       </div>
     </div>
-  </div>
 </template>
 
 <style>
