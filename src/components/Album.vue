@@ -380,8 +380,8 @@
 }
 
 .wrapper {
+  background-color: #444;
   display: grid;
-  grid-gap: 1em;
   grid-template-areas:
     "sidebar"
     "sidebar2";
@@ -389,7 +389,7 @@
 
 
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 600px) {
   .wrapper {
     grid-template-columns: 40% auto;
     grid-template-areas:
@@ -398,8 +398,6 @@
 }
 
 .box {
-  padding: 0px;
-  margin: 0px;
   background-color: #444;
   color: #fff;
 }
@@ -479,9 +477,9 @@
 }
 
 .music_list {
+  padding-left: 3px;
   font-family: "Poppins", sans-serif;
   list-style-type: none;
-  margin: 5px;
   color: white;
 }
 
