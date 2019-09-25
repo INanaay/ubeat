@@ -120,12 +120,6 @@ span {
   font-size: 20px;
 }
 
-a {
-  color: white;
-  font-weight: bold;
-  font-size: 2px;
-}
-
 #container {
   position: relative;
   color: white;
@@ -156,6 +150,12 @@ a {
   justify-content: center;
   align-items: center;
   padding: 30px;
+}
+
+.album-artist a {
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
 }
 
 #albums-container {
@@ -196,7 +196,7 @@ a {
   margin: 10px 0px 0px 20px;
 }
 
-a {
+.album-artist a {
   font-size: 13px;
 }
 
@@ -218,7 +218,7 @@ a {
     width: 75px;
   }
 
-  a {
+  .album-artist a {
     font-size: 10px;
   }
 }
