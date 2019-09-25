@@ -114,11 +114,7 @@ div {
   font-family: "Poppins", sans-serif;
 }
 
-span {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-}
+
 
 #container {
   position: relative;
@@ -135,6 +131,12 @@ span {
   flex-direction: column;
   padding: 10px;
   margin-left: 10px;
+}
+
+#centered span {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #title {
@@ -182,6 +184,10 @@ span {
     font-size: 40px;
   }
 
+  #centered span {
+    font-size: 15px;
+  }
+
   #background-image {
     height: 175px;
   }
@@ -209,7 +215,7 @@ span {
     height: 100px;
   }
 
-  span {
+ #centered span {
     font-size: 10px;
   }
 
