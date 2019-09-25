@@ -40,7 +40,6 @@
 </template>
 
 <style>
-
 body {
   padding: 0;
   margin: 0;
@@ -62,15 +61,15 @@ body {
 }
 
 .title:after {
-  content:' ';
-  display:block;
+  content: ' ';
+  display: block;
   width: 50%;
-  border:2px solid white;
+  border: 2px solid white;
   opacity: 0.5;
   border-radius: 20%;
 }
 
-.item ul{
+.item ul {
   display: inline-block;
   list-style-type: none;
 }
@@ -93,11 +92,11 @@ body {
   opacity: 1;
 }
 
-#left-arrow{
+#left-arrow {
   transform: rotate(180deg);
 }
 
-.item li{
+.item li {
   vertical-align: top;
   display: inline-block;
   text-align: center;
@@ -124,12 +123,33 @@ body {
   opacity: 0.5;
 }
 
-#selected-song h2{
+#selected-song h2 {
   padding-left: 10px;
 }
 
-
 #footer {
   padding-top: 50px;
+}
+
+@media screen and (max-width: 992px) {
+  .item img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .item span {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .item img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .title {
+    font-size: 10px;
+  }
 }
 </style>
