@@ -2,13 +2,13 @@
   <div>
     <div class="wrapper">
       <div class="box sidebar">
-          <img
-            id="album_cover_img"
-            src="../assets/album_cover.jpg"
-            alt="Italian Trulli"
-            width="250"
-            height="250"
-          />
+        <img
+          id="album_cover_img"
+          src="../assets/album_cover.jpg"
+          alt="Italian Trulli"
+          width="300"
+          height="300"
+        />
         <div id="album_infos">
           <div id="album_resume">
             <span class="album_infos_text">
@@ -17,15 +17,19 @@
             </span>
             <span class="album_infos_text">
               By
-              <br />Red Hot Chili Peppers
-              <br />
+              <br />Red Hot Chili Peppers (1991)
+              <br />Rock / Funk Rock
             </span>
             <span class="album_infos_text">
-              19 songs, 1 hr 19 min
-              <br />1991
+              <br />19 tracks, 1 hr 19 min
               <br />
             </span>
             <button type="button" class="play-button">Play</button>
+            <br />
+            <a
+              href="https://geo.music.apple.com/ca/album/blood-sugar-sex-magik/945581828?mt=1&app=music"
+              style="margin:5px;display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=1991-09-24&kind=album&bubble=apple_music) no-repeat;width:158px;height:45px;"
+            ></a>
           </div>
         </div>
       </div>
@@ -38,7 +42,7 @@
                   <span class="music_number">1</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span class="music_name">The Power Of Equality</span>
@@ -54,7 +58,7 @@
                   <span class="music_number">2</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>If You Have To Ask</span>
@@ -70,7 +74,7 @@
                   <span class="music_number">3</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Breaking The Girl</span>
@@ -86,7 +90,7 @@
                   <span class="music_number">4</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Funky Monks</span>
@@ -102,7 +106,7 @@
                   <span class="music_number">5</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Suck My Kiss</span>
@@ -118,7 +122,7 @@
                   <span class="music_number">6</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>I Could Have Lied</span>
@@ -134,7 +138,7 @@
                   <span class="music_number">7</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Mellowship Slinky in B Major</span>
@@ -150,7 +154,7 @@
                   <span class="music_number">8</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>The Righteous & the Wicked</span>
@@ -166,7 +170,7 @@
                   <span class="music_number">9</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Give It Away</span>
@@ -182,7 +186,7 @@
                   <span class="music_number">10</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Blood Sugar Sex Magik</span>
@@ -198,7 +202,7 @@
                   <span class="music_number">11</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Under The Brifge</span>
@@ -214,7 +218,7 @@
                   <span class="music_number">12</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Naked in the Rain</span>
@@ -230,7 +234,7 @@
                   <span class="music_number">13</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Apache Rose Peacock</span>
@@ -246,7 +250,7 @@
                   <span class="music_number">14</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>The Greeting Song</span>
@@ -262,7 +266,7 @@
                   <span class="music_number">15</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>My Lovely Man</span>
@@ -280,7 +284,7 @@
                 <div class="music-list-grid-item">
                   <img
                     class="love-track"
-                    src="../assets/like.png"
+                    src="../assets/play.png"
                     alt="love_track"
                     width="20"
                     height="20"
@@ -300,7 +304,7 @@
                   <span class="music_number">17</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Sir Psycho Sexy</span>
@@ -316,7 +320,7 @@
                   <span class="music_number">18</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>They're Red Hot</span>
@@ -332,7 +336,7 @@
                   <span class="music_number">18</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Little Miss Lover</span>
@@ -348,7 +352,7 @@
                   <span class="music_number">19</span>
                 </div>
                 <div class="music-list-grid-item">
-                  <img src="../assets/like.png" alt="love_track" width="20" height="20" />
+                  <img src="../assets/play.png" alt="love_track" width="20" height="20" />
                 </div>
                 <div class="music-list-grid-item">
                   <span>Castles Made of Sand</span>
@@ -366,6 +370,11 @@
 </template>
 
 <style>
+body {
+  background-color: #1b1b1b;
+  margin: 0px;
+  padding: 0px;
+}
 .sidebar {
   grid-area: sidebar;
 }
@@ -376,34 +385,22 @@
 
 .wrapper {
   background-color: #fff;
-  color: #444;
 }
 
 .wrapper {
-  background-color: #444;
   display: grid;
   grid-template-areas:
     "sidebar"
     "sidebar2";
 }
 
-
-
-@media only screen and (min-width: 600px) {
-  .wrapper {
-    grid-template-columns: 40% auto;
-    grid-template-areas:
-      "sidebar sidebar2"
-  }
-}
-
 .box {
-  background-color: #444;
+  background-color: #1b1b1b;
   color: #fff;
 }
 
 .sidebar2 {
-  background: #444;
+  background-color: #1b1b1b;
 }
 
 .music_number_info {
@@ -420,10 +417,10 @@
   border-color: gray;
 }
 
-
 .music-list-grid-item {
   border: 1px;
   border-color: green;
+  font-size: 13px;
 }
 
 .music-list-grid-item .love-track {
@@ -433,7 +430,7 @@
 .album_infos_text {
   font-family: "Poppins", sans-serif;
   color: white;
-  font-size: 18px;
+  font-size: 21px;
 }
 
 #album_info {
@@ -458,12 +455,11 @@
   height: auto;
   max-width: 100%;
   display: block;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 5px;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  
 }
 
 #music_list_container {
@@ -486,6 +482,7 @@
 .music_list .music_number {
   font-family: "Poppins", sans-serif;
   padding: 5px;
+  padding-right: 0px;
   color: white;
 }
 
@@ -502,9 +499,24 @@
   border-radius: 25%;
   color: white;
   padding: 14px 40px;
+  margin: 5px;
   font-size: 18;
   text-align: center;
   text-decoration: none;
   display: inline-block;
 }
+
+@media only screen and (min-width: 600px) {
+  .wrapper {
+    grid-template-columns: 40% auto;
+    grid-template-areas: "sidebar sidebar2";
+  }
+
+  .music-list-grid-item {
+    border: 1px;
+    border-color: green;
+    font-size: 18px;
+  }
+}
+
 </style>
