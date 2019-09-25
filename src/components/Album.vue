@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="wrapper">
       <div class="box sidebar">
         <img
