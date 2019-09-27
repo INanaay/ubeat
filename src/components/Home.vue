@@ -35,7 +35,6 @@
         </ul>
       </div>
     </div>
-    <div id="footer">GLO-3102 Home</div>
   </div>
 </template>
 
@@ -46,8 +45,8 @@ body {
 }
 
 #home h1 {
-  text-align: center;
   padding-top: 20px;
+  padding-left: 10px;
 }
 
 #home {
@@ -70,8 +69,9 @@ body {
 }
 
 .item ul {
-  display: inline-block;
-  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .title img {
@@ -127,11 +127,11 @@ body {
   padding-left: 10px;
 }
 
-#footer {
-  padding-top: 50px;
-}
-
 @media screen and (max-width: 992px) {
+  .item ul {
+    display: inline-block;
+  }
+
   .item img {
     width: 150px;
     height: 150px;
@@ -143,6 +143,10 @@ body {
 }
 
 @media screen and (max-width: 600px) {
+  .item ul {
+    display: inline-block;
+  }
+
   .item img {
     width: 100px;
     height: 100px;
