@@ -42,6 +42,7 @@
   #nav-show-bar {
     text-align: center;
     margin-top : -5px;
+    background-color: #1b1b1b;
   }
 
   #nav-show-button {
