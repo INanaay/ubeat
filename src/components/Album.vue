@@ -17,7 +17,7 @@
             <span class="album_infos_text">
               By
               <br />Red Hot Chili Peppers (1991)
-              <br />Rock / Funk Rock
+              <br />Rock / Funk rock
             </span>
             <span class="album_infos_text">
               <br />19 tracks, 1 hr 19 min
