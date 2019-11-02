@@ -33,6 +33,7 @@
         </div>
       </div>
       <div class="box sidebar2">
+        <MusicList v-bind:infos="infos.results"/>
         <div class="grid-item">
           <ul class="music_list">
             <li>
@@ -366,7 +367,32 @@
       </div>
     </div>
 </template>
+<script>
+import axios from "axios";
+import MusicList from "@/components/MusicList";
 
+export default {
+  name: "Album",
+  components: {
+    MusicList
+  },
+  data: () => ({
+    infos: [],
+    errors: []
+  }),
+  async created() {
+    try {
+      const response = await axios.get(
+        `http://ubeat.herokuapp.com/unsecure/albums/929463779/tracks`
+      );
+      this.infos = response.data;
+      console.log(response.data);
+    } catch (e) {
+      this.errors.push(e);
+    }
+  }
+}
+</script>
 <style>
 body {
   background-color: #1b1b1b;
