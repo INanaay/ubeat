@@ -4,20 +4,18 @@
     <div>
       <div class="title">
         <h2>Some Artist</h2>
-        <SomeArtist />
+        <SomeArtist
+          v-for="item in Artist_Data"
+          v-bind:key="item.id"
+          v-bind:data="item"
+        />
       </div>
     </div>
     <div>
       <div class="title">
         <h2>Some Album</h2>
-        <SomeAlbum />
-      </div>
-    </div>
-    <div>
-      <div class="title">
-        <h2>I Try Something</h2>
-        <ListTry
-          v-for="item in Artist_Data"
+        <SomeAlbum
+          v-for="item in Album_Data"
           v-bind:key="item.id"
           v-bind:data="item"
         />
@@ -29,13 +27,27 @@
 <script>
 import SomeArtist from "@/components/SomeArtist";
 import SomeAlbum from "@/components/SomeAlbum";
-import ListTry from "@/components/ListTry";
+import HomeApi from "@/script/api";
 export default {
   name: "HomeVue",
   components: {
     SomeArtist,
-    SomeAlbum,
-    ListTry
+    SomeAlbum
+  },
+  data: () => ({
+    Artist_Data: [],
+    Album_Data: []
+  }),
+  created() {
+    HomeApi.getArtistinfo("Skrillex")
+      .then(response => {
+        this.Artist_Data = response;
+      })
+      .catch(error => console.log(error));
+
+    HomeApi.getAlbuminfo("Back in Black").then(response => {
+      this.Album_Data = response;
+    });
   }
 };
 </script>
