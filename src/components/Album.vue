@@ -1,11 +1,11 @@
 <template>
-    <div class="wrapper">
-      <div class="box sidebar">
-        <AlbumInfos v-bind:albumInfos="albumInfos"/>
-      </div>
-      <div class="box sidebar2">
-        <MusicList v-bind:infos="infos.results"/>
-        <div class="grid-item">
+  <div class="wrapper">
+    <div class="box sidebar">
+      <AlbumInfos v-bind:albumInfos="albumInfos" v-bind:albumTimeMillis="albumTimeMillis"/>
+    </div>
+    <div class="box sidebar2">
+      <MusicList v-bind:infos="musicList.results"/>
+      <!-- <div class="grid-item">
           <ul class="music_list">
             <li>
               <div class="music-list-grid-container">
@@ -334,14 +334,31 @@
               </div>
             </li>
           </ul>
-        </div>
-      </div>
+      </div>-->
     </div>
+  </div>
 </template>
 <script>
 import axios from "axios";
 import MusicList from "@/components/MusicList";
 import AlbumInfos from "@/components/AlbumInfos.vue";
+
+function timeConversion(millisec) {
+  var seconds = (millisec / 1000).toFixed(1);
+  var minutes = (millisec / (1000 * 60)).toFixed(1);
+  var hours = (millisec / (1000 * 60 * 60)).toFixed(1);
+  var days = (millisec / (1000 * 60 * 60 * 24)).toFixed(1);
+
+  if (seconds < 60) {
+    return seconds + " Sec";
+  } else if (minutes < 60) {
+    return minutes + " Min";
+  } else if (hours < 24) {
+    return hours + " Hrs";
+  } else {
+    return days + " Days";
+  }
+}
 
 export default {
   name: "Album",
@@ -350,31 +367,39 @@ export default {
     AlbumInfos
   },
   data: () => ({
-    infos: [],
+    musicList: [],
     errors: [],
-    albumInfos: []
+    albumInfos: [],
+    albumTimeMillis: ""
   }),
   async created() {
     try {
       const response = await axios.get(
         `http://ubeat.herokuapp.com/unsecure/albums/929463779`
       );
-      this.albumInfos = response.data.results[0];
-      console.log(response.data.results[0])
+      if (response.status) {
+        this.albumInfos = response.data.results[0];
+        console.log(albumInfos)
+      }
     } catch (e) {
       this.errors.push(e);
     }
     try {
       const response = await axios.get(
         `http://ubeat.herokuapp.com/unsecure/albums/929463779/tracks`
-      );
-      this.infos = response.data;
-      console.log(response.data);
+      );      
+      this.musicList = response.data;
+      var time = 0
+      for (let index = 0; index < this.musicList.results.length; index++) {
+        const element = this.musicList.results[index];
+        time += element.trackTimeMillis;
+      }
+      this.albumTimeMillis += timeConversion(time);
     } catch (e) {
       this.errors.push(e);
     }
   }
-}
+};
 </script>
 <style>
 body {
@@ -488,7 +513,6 @@ body {
   color: white;
 }
 
-
 @media only screen and (min-width: 600px) {
   .wrapper {
     grid-template-columns: 40% auto;
@@ -501,5 +525,4 @@ body {
     font-size: 18px;
   }
 }
-
 </style>

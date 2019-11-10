@@ -1,8 +1,10 @@
 <template>
   <div>
+    <h1></h1>
     <img
       id="album_cover_img"
-      src="../assets/album_cover.jpg"
+      :src="albumInfos.artworkUrl100"
+      
       alt="Italian Trulli"
       width="300"
       height="300"
@@ -15,10 +17,10 @@
       <span class="album_infos_text">
         By
         <br />{{albumInfos.artistName}} (1991)
-        <br />Rock / Funk rock
+        <br />{{albumInfos.primaryGenreName}}
       </span>
       <span class="album_infos_text">
-        <br />{{albumInfos.trackCount}} tracks, 1 hr 19 min
+        <br />{{albumInfos.trackCount}} tracks, {{albumTimeMillis}}
         <br />
       </span>
       <button type="button" class="play-button">Play</button>
@@ -34,7 +36,7 @@
 <script>
 export default {
     name: "AlbumInfos",
-    props: ["albumInfos"]
+    props: ["albumInfos", "albumTimeMillis"]
 };
 </script>
 

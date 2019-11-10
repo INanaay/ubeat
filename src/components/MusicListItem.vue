@@ -29,7 +29,7 @@ function timeConversion(millisec) {
 
 export default {
   name: "MusicListItem",
-  props: ["info"],
+  props: ["info", "itemId"],
   data() {
     var trackDuration = new Date(this.info.trackTimeMillis);
     var time = timeConversion(this.info.trackTimeMillis);
@@ -37,6 +37,9 @@ export default {
       title: this.info.trackName,
       trackDuration: time
     };
+  },
+  created() {
+    console.log(itemId)
   },
   components: {
     PlayButton

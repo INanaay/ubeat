@@ -1,9 +1,10 @@
 <template>
   <div id="musicList">
-    <h1>Je suce !</h1>
-    <div v-bind:key="info.id" v-for="info in infos">
-      <MusicListItem v-bind:info="info"/>
-    </div>
+    <MusicListItem
+      v-for="info in infos"
+      v-bind:key="info.id"
+      v-bind:info="info"
+    />
   </div>
 </template>
 
