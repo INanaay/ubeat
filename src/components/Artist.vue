@@ -110,12 +110,6 @@ body {
   background-color: #1b1b1b;
 }
 
-div {
-  font-family: "Poppins", sans-serif;
-}
-
-
-
 #container {
   position: relative;
   color: white;
