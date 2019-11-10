@@ -1,28 +1,28 @@
 <template>
-  <div class="SomeAlb">
-    <img
-      class="albPicture"
-      alt="album_picture"
-      v-bind:key="albumpicture"
-      v-for="albumpicture in album_Picture"
-      v-bind:src="albumpicture.artworkUrl100"
-    />
-    <br />
-    <span
-      class="albName"
-      v-bind:key="albumname"
-      v-for="albumname in album_Name"
-    >
-      {{ albumname.collectionName }}
-    </span>
-    <br />
-    <span
-      class="artName"
-      v-bind:key="artistname"
-      v-for="artistname in artist_Name"
-    >
-      {{ artistname.artistName }}
-    </span>
+  <div>
+    <ul>
+      <li>
+        <img
+          v-bind:key="albumpicture"
+          v-for="albumpicture in album_Info"
+          v-bind:src="albumpicture.artworkUrl100"
+        />
+        <span
+          class="albName"
+          v-bind:key="albumname"
+          v-for="albumname in album_Info"
+        >
+          {{ albumname.collectionName }}
+        </span>
+        <span
+          class="artName"
+          v-bind:key="artistname"
+          v-for="artistname in album_Info"
+        >
+          {{ artistname.artistName }}
+        </span>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -32,32 +32,17 @@ export default {
   name: "SomeAlbum",
 
   data: () => ({
-    artist_Name: [],
-    album_Picture: [],
-    album_Name: []
+    album_Info: []
   }),
 
   created() {
     HomeApi.getAlbuminfo("Back in Black")
       .then(response => {
-        this.artist_Name = response;
-        this.album_Picture = response;
-        this.album_Name = response;
+        this.album_Info = response;
       })
       .catch(error => console.log(error));
   }
 };
 </script>
 
-<style scoped>
-.SomeAlb {
-}
-.albPicture {
-  width: 130px;
-  height: auto;
-}
-.artName {
-}
-.albName {
-}
-</style>
+<style scoped></style>

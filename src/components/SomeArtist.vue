@@ -4,11 +4,10 @@
       <li>
         <img
           v-bind:key="artistpicture"
-          v-for="artistpicture in artist_Picture"
+          v-for="artistpicture in artist_Info"
           v-bind:src="artistpicture.artworkUrl100"
         />
-        <br />
-        <span v-bind:key="artistname" v-for="artistname in artist_Name">
+        <span v-bind:key="artistname" v-for="artistname in artist_Info">
           {{ artistname.artistName }}
         </span>
       </li>
@@ -22,15 +21,13 @@ export default {
   name: "SomeArtist",
 
   data: () => ({
-    artist_Name: [],
-    artist_Picture: []
+    artist_Info: []
   }),
 
   created() {
     ArtistApi.getArtistinfo("2Pac")
       .then(response => {
-        this.artist_Name = response;
-        this.artist_Picture = response;
+        this.artist_Info = response;
       })
       .catch(error => console.log(error));
   }

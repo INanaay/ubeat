@@ -16,7 +16,11 @@
     <div>
       <div class="title">
         <h2>I Try Something</h2>
-        <ListTry />
+        <ListTry
+          v-for="item in Artist_Data"
+          v-bind:key="item.id"
+          v-bind:data="item"
+        />
       </div>
     </div>
   </div>
