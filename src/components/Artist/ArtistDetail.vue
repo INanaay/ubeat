@@ -5,13 +5,13 @@
         id="background-image"
         src="https://www.thenational.ae/image/policy:1.905572:1567597685/ac03-SEP-music-rhcp02.jpg?f=16x9&w=1200&$p$f$w=a6bfc83x"
       />
-      <div id="centered">
-        <h1 id="title">Red Hot Chili Peppers</h1>
-        <span>Rock, Funk Rock</span>
+      <div id="basic-info-container">
+        <h2 id="title">{{ this.artistInfo.artistName }}</h2>
+        <span>{{ this.artistInfo.primaryGenreName }}</span>
       </div>
       <a
         id="itunes-button"
-        href="https://geo.music.apple.com/us/artist/red-hot-chili-peppers/889780?mt=1&app=music&ls=1"
+        v-bind:href="artistInfo.artistLinkUrl"
         style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/lockup.svg?kind=artist&bubble=apple_music&style=standard-white) no-repeat;width:140px;height:30px;"
       ></a>
     </div>
@@ -26,68 +26,115 @@
           />
           <a>Californication</a>
         </div>
-
         <div class="album-artist">
           <img
             class="album-cover"
-            src="https://upload.wikimedia.org/wikipedia/en/2/23/Rhcp9.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
           />
-          <a>By The Way</a>
+          <a>Californication</a>
         </div>
-
         <div class="album-artist">
           <img
             class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81hS2wgxbhL._SY355_PJautoripBadge,BottomRight,4,-40_OU11__.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
           />
-          <a>Blood Sugar Sex Magik</a>
+          <a>Californication</a>
         </div>
-
         <div class="album-artist">
           <img
             class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81lOFvmn6tL._SL1500_.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
           />
-          <a>Stadium Arcadium</a>
+          <a>Californication</a>
         </div>
-
         <div class="album-artist">
           <img
             class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81CGfXRJkUL._SL1500_.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
           />
-          <a>The Getaway</a>
+          <a>Californication</a>
         </div>
-
         <div class="album-artist">
           <img
             class="album-cover"
-            src="https://m.media-amazon.com/images/I/81pAOO4ouyL._SS500_.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
           />
-          <a>One Hot Minute</a>
+          <a>Californication</a>
         </div>
-
         <div class="album-artist">
           <img
             class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/91OMG4YkWML._SY355_.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
           />
-          <a>The Uplift Mofo Party Plan</a>
+          <a>Californication</a>
         </div>
-
         <div class="album-artist">
           <img
             class="album-cover"
-            src="https://upload.wikimedia.org/wikipedia/en/9/98/Mother%27sMilkAlbumcover.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
           />
-          <a>Mother's Milk</a>
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style>
+<script>
+import api from "@/script/api";
+
+export default {
+  name: "ArtistDetail",
+  methods: {
+    getArtistInfos() {
+      const artistId = this.$route.params.id;
+
+      Promise.all([
+        api.getArtistById(artistId),
+        api.getArtistAlbumsById(artistId)
+      ])
+        .then(response => {
+          this.artistInfo = response[0][0];
+          this.albums = response[1];
+          console.log(this.artistInfo);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  data: () => ({
+    artistInfo: {},
+    albums: []
+  }),
+  created() {
+    this.getArtistInfos();
+  }
+};
+</script>
+
+<style scoped>
 #background-image {
   width: 100%;
   height: 250px;
@@ -103,16 +150,6 @@
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
-body {
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-  background-color: #1b1b1b;
-}
-
-div {
-  font-family: "Poppins", sans-serif;
-}
 #container {
   position: relative;
   color: white;
@@ -120,17 +157,17 @@ div {
   align-items: center;
 }
 
-#centered {
+#basic-info-container {
   background-color: transparent;
   position: absolute;
   top: 10%;
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin-left: 10px;
+  margin-left: 50px;
 }
 
-#centered span {
+#basic-info-container span {
   color: white;
   font-weight: bold;
   font-size: 20px;
@@ -159,11 +196,11 @@ div {
 
 #albums-container {
   display: flex;
-  align-items: flex-start;
   flex-direction: row;
   padding: 10px;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .album-cover {
@@ -182,7 +219,7 @@ div {
     font-size: 40px;
   }
 
-  #centered span {
+  #basic-info-container span {
     font-size: 15px;
   }
 
@@ -213,7 +250,7 @@ div {
     height: 100px;
   }
 
-  #centered span {
+  #basic-info-container span {
     font-size: 10px;
   }
 
