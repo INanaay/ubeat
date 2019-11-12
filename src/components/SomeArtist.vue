@@ -4,7 +4,7 @@
       <li>
         <img v-bind:src="data.artworkUrl100" />
         <br />
-        {{ data.artistName }}
+        <span>{{ data.artistName }}</span>
       </li>
     </ul>
   </div>

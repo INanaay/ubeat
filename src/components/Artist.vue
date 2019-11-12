@@ -114,8 +114,6 @@ div {
   font-family: "Poppins", sans-serif;
 }
 
-
-
 #container {
   position: relative;
   color: white;
@@ -215,7 +213,7 @@ div {
     height: 100px;
   }
 
- #centered span {
+  #centered span {
     font-size: 10px;
   }
 
