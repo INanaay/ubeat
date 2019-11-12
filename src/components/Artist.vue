@@ -156,6 +156,7 @@ body {
 
 #albums-container {
   display: flex;
+  align-items: flex-start;
   flex-direction: row;
   padding: 10px;
   flex-wrap: wrap;

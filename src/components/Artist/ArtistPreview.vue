@@ -1,16 +1,14 @@
 <template>
-  <a href="#" class="artist-preview">
-    <img
-      src="https://images-na.ssl-images-amazon.com/images/I/81lOFvmn6tL._SL1500_.jpg"
-    />
-    <span>{{ name }}</span>
-  </a>
+  <router-link v-bind:to="'/artist/' + artistData.artistId" class="artist-preview">
+      <img v-bind:src="artistData.artworkUrl100" />
+    <span>{{ artistData.artistName }}</span>
+  </router-link>
 </template>
 
 <script>
 export default {
   name: "ArtistPreview",
-  props: ["name", "url"]
+  props: ["artistData"]
 };
 </script>
 
@@ -19,6 +17,7 @@ export default {
   display: inline-block;
   text-align: center;
   text-decoration: none;
+  padding: 20px;
 }
 
 .artist-preview img {

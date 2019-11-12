@@ -18,6 +18,11 @@ export default {
 <style>
   body {
     font-family: 'Poppins', sans-serif;
+  }
 
+  h1 {
+    font-size: 25px;
+    color: white;
+    margin-left: 50px;
   }
 </style>
