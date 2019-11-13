@@ -11,7 +11,7 @@ export default {
   },
 
   getAlbuminfo(album_name) {
-    const url = apiUrl + "search/albums?limit=3&q=" + album_name;
+    const url = apiUrl + "search/albums?limit=1&q=" + album_name;
     return axios.get(url).then(response => {
       return response.data.results;
     });

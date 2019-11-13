@@ -1,22 +1,22 @@
 <template>
   <div id="home">
     <div class="box">
-      <img class="banner" src="../assets/Grey-banner-musical-notes.jpg" />
+      <img class="banner" src="../assets/banner.png" />
       <div class="text">
-        <h1>Ubeat</h1>
+        <h2>Ubeat</h2>
         <br />
         <p>Share music with your friend</p>
       </div>
     </div>
-    <h2>Home</h2>
+    <h1>Home</h1>
     <div>
       <div>
         <h2 class="title">Some Artist</h2>
-        <div class="SomeArt">
-          <SomeArtist
-            v-for="item in Artist_Data"
-            v-bind:key="item.id"
-            v-bind:data="item"
+        <div>
+          <ArtistPreview
+            v-bind:key="'item' + i"
+            v-for="(item, i) in artists"
+            v-bind:artistData="item"
           />
         </div>
       </div>
@@ -24,11 +24,11 @@
     <div>
       <div>
         <h2 class="title">Some Album</h2>
-        <div class="SomeAlb">
-          <SomeAlbum
-            v-for="item in Album_Data"
-            v-bind:key="item.id"
-            v-bind:data="item"
+        <div>
+          <AlbumPreview
+            v-bind:key="'item' + a"
+            v-for="(item, a) in albums"
+            v-bind:albumData="item"
           />
         </div>
       </div>
@@ -37,46 +37,61 @@
 </template>
 
 <script>
-import SomeArtist from "@/components/SomeArtist";
-import SomeAlbum from "@/components/SomeAlbum";
-import HomeApi from "@/script/api";
+import ArtistPreview from "./Artist/ArtistPreview";
+import AlbumPreview from "./Album/AlbumPreview";
+import api from "@/script/api";
 export default {
   name: "HomeVue",
   components: {
-    SomeArtist,
-    SomeAlbum
+    ArtistPreview,
+    AlbumPreview
+  },
+  methods: {
+    async populateArtists() {
+      Promise.all([
+        api.getArtistinfo("Skrillex"),
+        api.getArtistinfo("2pac"),
+        api.getArtistinfo("Sum41"),
+        api.getArtistinfo("AC/DC")
+      ])
+        .then(response => {
+          for (let index = 0; index < response.length; index++) {
+            this.artists.push(response[index][0]);
+          }
+        })
+        .catch(error => {
+          alert(error);
+        });
+    },
+    async populateAlbum() {
+      Promise.all([
+        api.getAlbuminfo("Back in Black"),
+        api.getAlbuminfo("Recess"),
+        api.getAlbuminfo("The Wall"),
+        api.getAlbuminfo("Stadium Arcadium")
+      ])
+        .then(response => {
+          for (let index = 0; index < response.length; index++) {
+            this.albums.push(response[index][0]);
+          }
+        })
+        .catch(error => {
+          alert(error);
+        });
+    }
   },
   data: () => ({
-    Artist_Data: [],
-    Album_Data: []
+    artists: [],
+    albums: []
   }),
   created() {
-    HomeApi.getArtistinfo("Skrillex")
-      .then(response => {
-        this.Artist_Data = response;
-      })
-      .catch(error => console.log(error));
-
-    HomeApi.getAlbuminfo("Back in Black").then(response => {
-      this.Album_Data = response;
-    });
+    this.populateArtists();
+    this.populateAlbum();
   }
 };
 </script>
 
 <style>
-body {
-  padding: 0;
-  margin: 0;
-}
-
-ul {
-  list-style-type: none;
-}
-li {
-  list-style-type: none;
-}
-
 .box {
   position: relative;
   display: flex; /* Make the width of box same as image */
@@ -97,18 +112,13 @@ li {
   position: absolute;
   z-index: 999;
   margin: 0 auto;
+  padding-bottom: 200px;
   left: 0;
   right: 0;
-  top: 10%; /* Adjust this value to move the positioned div up and down */
+  top: 10%;
   text-align: center;
   font-weight: bold;
   font-size: 30px;
-  width: 60%; /* Set the width of the positioned div */
-}
-
-#home h1 {
-  padding-top: 20px;
-  padding-left: 10px;
 }
 
 #home {
@@ -118,31 +128,17 @@ li {
 }
 
 .title {
-  padding-left: 10px;
+  padding-left: 30px;
 }
 
-.SomeArt {
-  display: flex;
-  justify-content: space-around;
-  padding-left: 50px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.SomeArt img {
-  width: 150px;
-  border-radius: 50%;
-}
-
-.SomeAlb {
-  display: flex;
-  justify-content: space-around;
-  padding-left: 50px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.SomeAlb img {
-  width: 150px;
+@media screen and (max-width: 600px) {
+  .box .text {
+    top: 0;
+    font-size: 10px;
+  }
+  .box .text h1 {
+    top: 0;
+    font-size: 15px;
+  }
 }
 </style>
