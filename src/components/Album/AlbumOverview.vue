@@ -1,10 +1,12 @@
 <template>
   <div>
-    <AlbumPreview
-      v-bind:key="'item' + index"
-      v-for="(item, index) in albums"
-      v-bind:albumData="item"
-    />
+    <div>
+      <AlbumPreview
+        v-bind:key="'item' + index"
+        v-for="(item, index) in albums"
+        v-bind:albumData="item"
+      />
+    </div>
   </div>
 </template>
 
