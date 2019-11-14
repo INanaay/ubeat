@@ -7,7 +7,7 @@
       />
       <div id="basic-info-container">
         <h2 id="title">{{ this.artistInfo.artistName }}</h2>
-        <span>{{ this.artistInfo.primaryGenreName}}</span>
+        <span>{{ this.artistInfo.primaryGenreName }}</span>
       </div>
       <a
         id="itunes-button"
@@ -39,64 +39,63 @@
             src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
           />
           <a>Californication</a>
-        </div><div class="album-artist">
-        <img
-          class="album-cover"
-          src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-        />
-        <a>Californication</a>
-      </div><div class="album-artist">
-        <img
-          class="album-cover"
-          src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-        />
-        <a>Californication</a>
-      </div><div class="album-artist">
-        <img
-          class="album-cover"
-          src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-        />
-        <a>Californication</a>
-      </div><div class="album-artist">
-        <img
-          class="album-cover"
-          src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-        />
-        <a>Californication</a>
-      </div><div class="album-artist">
-        <img
-          class="album-cover"
-          src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-        />
-        <a>Californication</a>
-      </div><div class="album-artist">
-        <img
-          class="album-cover"
-          src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-        />
-        <a>Californication</a>
-      </div><div class="album-artist">
-        <img
-          class="album-cover"
-          src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-        />
-        <a>Californication</a>
-      </div><div class="album-artist">
-        <img
-          class="album-cover"
-          src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-        />
-        <a>Californication</a>
-      </div>
-
-
-
-
-
-
-
-
-
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
+        <div class="album-artist">
+          <img
+            class="album-cover"
+            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
+          />
+          <a>Californication</a>
+        </div>
       </div>
     </div>
   </div>

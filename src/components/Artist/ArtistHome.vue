@@ -3,7 +3,11 @@
     <h1>Artists</h1>
 
     <div id="artist-container">
-      <artist-preview v-for="item in artists" v-bind:artistData="item" />
+      <artist-preview
+        v-bind:key="item"
+        v-for="item in artists"
+        v-bind:artistData="item"
+      />
     </div>
   </div>
 </template>

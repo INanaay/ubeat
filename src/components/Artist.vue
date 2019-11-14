@@ -110,6 +110,9 @@ body {
   background-color: #1b1b1b;
 }
 
+div {
+  font-family: "Poppins", sans-serif;
+}
 #container {
   position: relative;
   color: white;
@@ -210,7 +213,7 @@ body {
     height: 100px;
   }
 
- #centered span {
+  #centered span {
     font-size: 10px;
   }
 
