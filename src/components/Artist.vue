@@ -110,12 +110,6 @@ body {
   background-color: #1b1b1b;
 }
 
-div {
-  font-family: "Poppins", sans-serif;
-}
-
-
-
 #container {
   position: relative;
   color: white;
@@ -162,6 +156,7 @@ div {
 
 #albums-container {
   display: flex;
+  align-items: flex-start;
   flex-direction: row;
   padding: 10px;
   flex-wrap: wrap;
