@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "@/components/Home";
 import Album from "@/components/Album";
+import AlbumOverview from "@/components//Album/AlbumOverview";
 import Artist from "@/components/Artist/ArtistHome";
 import ArtistDetail from "../components/Artist/ArtistDetail";
 
@@ -25,9 +26,9 @@ export default new Router({
       component: ArtistDetail
     },
     {
-      path: "/album",
-      name: "Album",
-      component: Album
+      path: "/albumOverview",
+      name: "AlbumOverview",
+      component: AlbumOverview
     }
   ]
 });

@@ -8,7 +8,7 @@
         <router-link to="/">Home</router-link>
       </li>
       <li id="nav-album" class="navbar navleft">
-        <router-link to="/album">Album</router-link>
+        <router-link to="/albumOverview">Album</router-link>
       </li>
       <li id="nav-artist" class="navbar navleft">
         <router-link to="/artist">Artist</router-link>
