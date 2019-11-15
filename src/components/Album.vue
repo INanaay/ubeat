@@ -1,13 +1,14 @@
 <template>
   <div class="wrapper">
     <div class="box sidebar">
-      <AlbumInfos v-bind:albumInfos="this.albumInfos" v-bind:albumTimeMillis="this.albumTimeMillis"/>
+      <AlbumInfos
+        v-bind:albumInfos="this.albumInfos"
+        v-bind:albumTimeMillis="this.albumTimeMillis"
+      />
     </div>
     <div class="box sidebar2">
-      <MusicList v-bind:infos="musicList.results"/>
-      <div class="grid-item">
-        
-      </div>
+      <MusicList v-bind:infos="musicList.results" />
+      <div class="grid-item"></div>
     </div>
   </div>
 </template>
@@ -15,6 +16,7 @@
 import axios from "axios";
 import MusicList from "@/components/MusicList";
 import AlbumInfos from "@/components/AlbumInfos.vue";
+import api from "@/script/api";
 
 function timeConversion(millisec) {
   var seconds = (millisec / 1000).toFixed(1);
@@ -46,23 +48,23 @@ export default {
     albumTimeMillis: ""
   }),
   async created() {
+    var albumId = this.$route.params.id;
     try {
       const response = await axios.get(
-        `http://ubeat.herokuapp.com/unsecure/albums/929463779`
+        `http://ubeat.herokuapp.com/unsecure/albums/` + albumId
       );
       if (response.status) {
         this.albumInfos = response.data.results[0];
-        console.log(this.albumInfos)
       }
     } catch (e) {
       this.errors.push(e);
     }
     try {
       const response = await axios.get(
-        `http://ubeat.herokuapp.com/unsecure/albums/929463779/tracks`
-      );      
+        "http://ubeat.herokuapp.com/unsecure/albums/" + albumId + "/tracks"
+      );
       this.musicList = response.data;
-      var time = 0
+      var time = 0;
       for (let index = 0; index < this.musicList.results.length; index++) {
         const element = this.musicList.results[index];
         time += element.trackTimeMillis;

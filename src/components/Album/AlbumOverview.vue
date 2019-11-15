@@ -2,9 +2,9 @@
   <div>
     <div>
       <AlbumPreview
+        v-bind:albumData="item"
         v-bind:key="'item' + index"
         v-for="(item, index) in albums"
-        v-bind:albumData="item"
       />
     </div>
   </div>
@@ -31,6 +31,7 @@ export default {
           for (let index = 0; index < response.length; index++) {
             this.albums.push(response[index][0]);
           }
+          console.log(this.albums)
         })
         .catch(error => {
           alert(error);

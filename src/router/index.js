@@ -29,6 +29,11 @@ export default new Router({
       path: "/albumOverview",
       name: "AlbumOverview",
       component: AlbumOverview
+    },
+    {
+      path: "/album/:id",
+      name: "Album",
+      component: Album
     }
   ]
 });

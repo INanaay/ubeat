@@ -27,5 +27,17 @@ export default {
     return axios.get(url).then(response => {
       return response.data.results;
     });
+  },
+  async getAlbumTracksByAlbumId(id) {
+    const url = apiUrl + "albums/" + id + "/tracks";
+    return await axios.get(url).then(response => {
+      return response.data.results;
+    });
+  },
+  getAlbumInfoByAlbumId(id) {
+    const url = apiUrl + "albums/" + id;
+    return axios.get(url).then(response => {
+      return response.data.results[0];
+    });
   }
 };
