@@ -25,4 +25,19 @@ h1 {
   color: white;
   margin-left: 50px;
 }
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 22px;
+    margin-left:30px;
+  }
+
+  @media screen and (max-width: 600px) {
+    h1 {
+      font-size: 17px;
+      margin-left:15px;
+    }
+  }
+
+}
 </style>

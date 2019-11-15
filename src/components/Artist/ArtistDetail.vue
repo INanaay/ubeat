@@ -19,83 +19,11 @@
     <div>
       <h1 id="albums-title">Albums</h1>
       <div id="albums-container">
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
-        <div class="album-artist">
-          <img
-            class="album-cover"
-            src="https://images-na.ssl-images-amazon.com/images/I/81TnWHafWdL._SL1448_.jpg"
-          />
-          <a>Californication</a>
-        </div>
+        <album-preview
+          v-bind:key="'item' + a"
+          v-for="(item, a) in albums"
+          v-bind:albumData="item"
+        />
       </div>
     </div>
   </div>
@@ -103,9 +31,11 @@
 
 <script>
 import api from "@/script/api";
+import AlbumPreview from "@/components/Album/AlbumPreview";
 
 export default {
   name: "ArtistDetail",
+  components: { AlbumPreview },
   methods: {
     getArtistInfos() {
       const artistId = this.$route.params.id;
@@ -117,9 +47,9 @@ export default {
         .then(response => {
           this.artistInfo = response[0][0];
           this.albums = response[1];
-          console.log(this.artistInfo);
         })
         .catch(error => {
+          alert("Error fetching informations");
           console.log(error);
         });
     }
@@ -199,7 +129,7 @@ export default {
   flex-direction: row;
   padding: 10px;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
 }
 
@@ -243,7 +173,7 @@ export default {
 
 @media screen and (max-width: 600px) {
   #title {
-    font-size: 20px;
+    font-size: 25px;
   }
 
   #background-image {

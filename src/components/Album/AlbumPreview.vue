@@ -17,15 +17,20 @@ export default {
 
 <style scoped>
 .album-preview {
+  word-wrap: normal;
+  margin: 15px;
+  justify-content: center;
   display: inline-block;
   text-align: center;
   text-decoration: none;
+  overflow: hidden;
   padding: 20px;
+  width: 200px;
 }
 
 .album-preview img {
+  text-align: center;
   width: 150px;
-  display: block;
   margin-bottom: 10px;
 }
 
@@ -36,6 +41,7 @@ export default {
 .album-preview span {
   display: block;
   color: white;
+  overflow: hidden;
 }
 
 .album-preview span:hover {
@@ -43,9 +49,13 @@ export default {
 }
 
 @media screen and (max-width: 992px) {
-  .album-preview img {
+  .album-preview {
     width: 150px;
-    height: 150px;
+  }
+
+  .album-preview img {
+    width: 100px;
+    height: 100px;
   }
 
   .album-preview span {
@@ -54,9 +64,12 @@ export default {
 }
 
 @media screen and (max-width: 600px) {
-  .album-preview img {
+  .album-preview {
     width: 100px;
-    height: 100px;
+  }
+  .album-preview img {
+    width: 75px;
+    height: 75px;
   }
 
   .album-preview span {
