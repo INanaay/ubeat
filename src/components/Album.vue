@@ -8,7 +8,6 @@
     </div>
     <div class="box sidebar2">
       <MusicList v-bind:infos="musicList.results" />
-      <div class="grid-item"></div>
     </div>
   </div>
 </template>
@@ -84,14 +83,12 @@ body {
 }
 .sidebar {
   grid-area: sidebar;
+  justify-content: center;
 }
 
 .sidebar2 {
   grid-area: sidebar2;
-}
-
-.wrapper {
-  background-color: #fff;
+  justify-content: center;
 }
 
 .wrapper {
@@ -106,14 +103,6 @@ body {
   color: #fff;
 }
 
-.sidebar2 {
-  background-color: #1b1b1b;
-}
-
-.music_number_info {
-  color: white;
-}
-
 .music-list-grid-container {
   margin: 4px;
   display: grid;
@@ -124,80 +113,10 @@ body {
   border-color: gray;
 }
 
-.music-list-grid-item {
-  border: 1px;
-  border-color: green;
-  font-size: 13px;
-}
-
-.music-list-grid-item .love-track {
-  float: left;
-}
-
-.album_infos_text {
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-size: 21px;
-}
-
-#album_info {
-  text-align: center;
-}
-
-#grid-header-container {
-  display: grid;
-  grid-template-columns: 25% 50% 25%;
-}
-
-#album_resume {
-  margin: 10px;
-  text-align: center;
-}
-
-#cover_photo {
-  margin: auto;
-}
-
-#music_list_container {
-  padding: 10px;
-  margin: 10px;
-}
-
-#listen_on_apple {
-  padding: 10px;
-  float: right;
-}
-
-.music_list {
-  padding-left: 3px;
-  font-family: "Poppins", sans-serif;
-  list-style-type: none;
-  color: white;
-}
-
-.music_list .music_number {
-  font-family: "Poppins", sans-serif;
-  padding: 5px;
-  padding-right: 0px;
-  color: white;
-}
-
-.music_list .music_element {
-  font-family: "Poppins", sans-serif;
-  padding: 5px;
-  color: white;
-}
-
 @media only screen and (min-width: 600px) {
   .wrapper {
     grid-template-columns: 40% auto;
     grid-template-areas: "sidebar sidebar2";
-  }
-
-  .music-list-grid-item {
-    border: 1px;
-    border-color: green;
-    font-size: 18px;
   }
 }
 </style>
