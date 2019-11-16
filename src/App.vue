@@ -16,13 +16,15 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: "Poppins", sans-serif;
-}
+  @import "https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css";
 
-h1 {
-  font-size: 25px;
-  color: white;
-  margin-left: 50px;
-}
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+
+  h1 {
+    font-size: 25px;
+    color: white;
+    margin-left: 50px;
+  }
 </style>
