@@ -38,8 +38,8 @@ class Playlist {
     this.musics.push(music);
   }
 
-  removeMusicbyPosition(position) {
-    this.musics.splice(position);
+  removeMusicByPosition(position) {
+    this.musics.splice(position, 1);
   }
 
   removeMusicById(id) {

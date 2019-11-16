@@ -5,6 +5,7 @@
       v-bind:key="info.id"
       v-bind:info="info"
       v-bind:itemId="index"
+      v-bind:playlist="playlist"
     />
   </div>
 </template>
@@ -17,7 +18,10 @@ export default {
   components: {
     MusicListItem
   },
-  props: ["infos"]
+  props: ["infos", "playlist"],
+  created() {
+    console.log(this.$props)
+  }
 };
 </script>
 

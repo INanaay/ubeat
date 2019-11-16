@@ -8,7 +8,7 @@
       />
     </div>
     <div class="box sidebar2">
-      <MusicList v-bind:infos="musicList.results" />
+      <MusicList v-bind:infos="musicList.results"/>
     </div>
   </div>
 </template>
