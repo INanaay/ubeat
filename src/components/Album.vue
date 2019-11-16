@@ -387,7 +387,7 @@ export default {
     try {
       const response = await axios.get(
         `http://ubeat.herokuapp.com/unsecure/albums/929463779/tracks`
-      );      
+      );
       this.musicList = response.data;
       var time = 0
       for (let index = 0; index < this.musicList.results.length; index++) {

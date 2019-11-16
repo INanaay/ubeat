@@ -7,6 +7,7 @@
 
 <script>
 import Navigation from "@/components/Navigation";
+
 export default {
   name: "app",
   components: {
@@ -15,4 +16,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+  @import "https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css";
+</style>

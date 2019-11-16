@@ -16,27 +16,43 @@
       <li id="nav-user-settings" class="navbar navleft">
         <router-link to="">User Settings</router-link>
       </li>
-
+      <li id="nav-playlist" class="navbar navleft">
+        <router-link to="/playlist">Playlist</router-link>
+      </li>
       <li id="nav-disconnect" class="navbar navright">
         <router-link to="">Disconnect</router-link>
-        <button v-on:click="showNavbar = false" id="nav-hide-btn">Hide</button>
+        <button v-on:click="showNavbar = false" id="nav-hide-btn"><span class="mdi mdi-window-close"></span></button>
       </li>
       <li id="nav-user" class="navbar navright">
         Roger Martin
       </li>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
-      <button id="nav-show-button"  v-on:click="showNavbar = true">Show Navbar</button>
+      <button id="nav-show-button"  v-on:click="showNavbar = true"><span class="mdi mdi-chevron-double-up"></span></button>
     </div>
   </nav>
 </template>
 
+
+<script>
+    module.exports = {
+        data: function () {
+            return {
+                showNavbar: window.innerWidth >= 992
+            }
+        }
+    };
+</script>
 
 <style>
   .hiddenNavbar {
     background-color: white;
     border: none;
     margin-top: 0;
+  }
+
+  .mdi-chevron-double-up {
+  font-size: 20px;
   }
 
   #nav-show-bar {
@@ -47,9 +63,9 @@
 
   #nav-show-button {
     font-size: 13px;
-    background-color: #222326;
+    background-color: #1b1b1b;
     color: white;
-    border: 2px solid #222326;
+    border: 2px solid #1b1b1b;
   }
 
 
@@ -62,7 +78,7 @@
     cursor: pointer;
     float: right;
     margin-top: -13px;
-    margin-right: -35px;
+    margin-right: -15px;
   }
 
   ul {
@@ -70,10 +86,10 @@
   }
   .navright {
     float: right;
-    padding-right: 35px;
+    padding-right: 15px;
   }
   .navleft {
-    padding-left: 30px;
+    padding-left: 15px;
   }
   .navbar > a {
     font-size: 22px;
@@ -109,13 +125,13 @@
     }
     .navright {
       margin-top: -8px;
-      padding-right: 18px;
+      padding-right: 10px;
     }
     .navbar {
       padding-top: 10px;
     }
     .navbar > a {
-      font-size: 14px;
+      font-size: 12px;
     }
     #nav-user {
       margin-top: -7px;
@@ -132,8 +148,8 @@
       color: white;
       cursor: pointer;
       float: right;
-      margin-top: -13px;
-      margin-right: -20px;
+      margin-top: -15px;
+      margin-right: -10px;
     }
   }
 
@@ -160,18 +176,9 @@
     #nav-hide-btn {
       float: right;
       font-size: 12px;
-      margin-top: -240px;
+      margin-top: -290px;
       margin-right: 0px;
     }
   }
 </style>
 
-<script>
-  module.exports = {
-      data: function () {
-          return {
-              showNavbar: window.innerWidth >= 992
-          }
-      }
-  };
-</script>
