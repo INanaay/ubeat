@@ -1,17 +1,17 @@
 <template>
   <div class="item-container">
+    <span v-on:click="deleteSong(itemId)" class="mdi mdi-trash-can" />
     <p>{{info.trackNumber}}</p>
     <p>{{title}}</p>
     <PlayButton v-bind:previewUrl="info.previewUrl" />
     <select v-if="isActive" size="3" style="position: relative">
-      <option v-for="playlist in playlists" v-on:click="addMusicToPlaylist(info, playlist)" v-bind:key="playlist.id">{{playlist.name}}</option>
+      <option
+        v-for="(playlist) in playlists"
+        v-on:click="addMusicToPlaylist(info, playlist)"
+        v-bind:key="playlist.id"
+      >{{playlist.name}}</option>
     </select>
-    <img
-      src="../assets/plus.svg"
-      alt
-      style="height: 25px; lenght: 25xp"
-      v-on:click="openSelect()"
-    />
+    <img src="../assets/plus.svg" alt style="height: 25px; lenght: 25xp" v-on:click="openSelect()" />
     <p>{{trackDuration}}</p>
   </div>
 </template>
@@ -52,17 +52,21 @@ export default {
   },
   methods: {
     getPlaylist: function() {
-      this.playlists = db.getPlaylists();    },
+      this.playlists = db.getPlaylists();
+    },
     openSelect: function() {
       this.isActive = !this.isActive;
     },
     addMusicToPlaylist(music, playlist) {
-      playlist.addMusic(music)
-      this.isActive = !this.isActive
+      playlist.addMusic(music);
+      this.isActive = !this.isActive;
+    },
+    deleteSong(index) {
+      playlist.removeMusicByPosition(index)
     }
   },
   created() {
-    this.getPlaylist();
+    
   },
   components: {
     PlayButton
@@ -74,7 +78,7 @@ export default {
 .item-container {
   display: grid;
   padding: 5px;
-  grid-template-columns: 10% 10% 55% 10% 15%;
+  grid-template-columns: 10% 10% 45% 10% 15% 10%;
   border-bottom-style: solid;
   border-width: 1px;
   border-color: gray;

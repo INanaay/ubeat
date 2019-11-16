@@ -38,6 +38,10 @@ class Playlist {
     this.musics.push(music);
   }
 
+  removeMusicbyPosition(position) {
+    this.musics.splice(position);
+  }
+
   removeMusicById(id) {
     for (var i = 0; i < this.musics.length; i++) {
       if (this.musics[i].id === id) {
