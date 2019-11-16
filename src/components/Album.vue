@@ -15,7 +15,6 @@
 import axios from "axios";
 import MusicList from "@/components/MusicList";
 import AlbumInfos from "@/components/AlbumInfos.vue";
-import api from "@/script/api";
 
 function timeConversion(millisec) {
   var seconds = (millisec / 1000).toFixed(1);

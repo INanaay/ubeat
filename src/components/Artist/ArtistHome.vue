@@ -4,8 +4,8 @@
 
     <div id="artist-container">
       <artist-preview
-        v-bind:key="item"
-        v-for="item in artists"
+        v-bind:key="'item' + i"
+        v-for="(item, i) in artists"
         v-bind:artistData="item"
       />
     </div>
@@ -44,7 +44,6 @@ export default {
         .then(response => {
           for (let index = 0; index < response.length; index++) {
             this.artists.push(response[index][0]);
-            console.log(response);
           }
         })
         .catch(error => {

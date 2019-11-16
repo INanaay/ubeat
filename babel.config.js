@@ -3,6 +3,6 @@ module.exports = {
     '@vue/app',
   ],
   ignore: [
-    'src/scripts/*'
+    'src/script/*'
   ]
 };

@@ -53,6 +53,14 @@ class Playlist {
   rename(name) {
     this.name = name;
   }
+
+  formatMusicList() {
+    var musicData = [];
+    for (var music of this.getMusics()) {
+      musicData.push(music.data);
+    }
+    return musicData;
+  }
 }
 
 module.exports = Playlist;

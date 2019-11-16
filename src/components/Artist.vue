@@ -158,12 +158,15 @@ div {
 }
 
 #albums-container {
+  background-color: #4caf50;
+  color: red;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
   padding: 10px;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  overflow: hidden;
 }
 
 .album-cover {

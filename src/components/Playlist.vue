@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <div v-if="!musicListMode">
@@ -34,18 +33,14 @@
       <div class="header">
         <h1>{{ currentPlaylist.name }} playlist</h1>
       </div>
-      <MusicList v-bind:infos="currentPlaylist.musics"/>
+      <MusicList v-bind:infos="currentPlaylist.formatMusicList()"/>
     </div>
   </div>
 </template>
 
 <script>
-    // TO DO : GRAPH ? ADD FAKE DB ? DO MUSIC LISTS
-    // TO DO : GRAPH ? ADD FAKE DB ? DO MUSIC LISTS
-    // TO DO : GRAPH ? ADD FAKE DB ? DO MUSIC LISTS
-
     import MusicList from "@/components/MusicList.vue";
-    import db from "@/scripts/db";
+    import db from "@/script/db";
 
     export default {
         name: "Playlist",
