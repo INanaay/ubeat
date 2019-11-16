@@ -69,7 +69,7 @@ export default {
 <style scoped>
 #background-image {
   width: 100%;
-  height: 250px;
+  height: 400px;
   object-fit: cover;
   object-position: 10% 10%;
   -webkit-mask-image: -webkit-gradient(
