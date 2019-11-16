@@ -31,6 +31,7 @@ export default {
 .album-preview img {
   text-align: center;
   width: 150px;
+  height: 150px;
   margin-bottom: 10px;
 }
 
