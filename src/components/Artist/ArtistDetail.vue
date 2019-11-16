@@ -112,14 +112,6 @@ export default {
   margin-bottom: 10px;
 }
 
-.album-artist {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-}
-
 .album-artist a {
   color: white;
   font-weight: bold;
@@ -158,11 +150,6 @@ export default {
   #background-image {
     height: 175px;
   }
-
-  .album-cover {
-    height: 100px;
-    width: 100px;
-  }
 }
 
 #itunes-button {
@@ -184,11 +171,6 @@ export default {
 
   #basic-info-container span {
     font-size: 10px;
-  }
-
-  .album-cover {
-    height: 75px;
-    width: 75px;
   }
 
   .album-artist a {
