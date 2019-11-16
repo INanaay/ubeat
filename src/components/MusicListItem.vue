@@ -4,13 +4,13 @@
     <p>{{title}}</p>
     <PlayButton v-bind:previewUrl="info.previewUrl" />
     <select v-if="isActive" size="3" style="position: relative">
-      <option v-for="playlist in playlists" v-on:click="addMusicToPlaylist(playlist)" v-bind:key="playlist.id">{{playlist.name}}</option>
+      <option v-for="playlist in playlists" v-on:click="addMusicToPlaylist(info, playlist)" v-bind:key="playlist.id">{{playlist.name}}</option>
     </select>
     <img
       src="../assets/plus.svg"
       alt
       style="height: 25px; lenght: 25xp"
-      v-on:click="addMusicToPlaylist()"
+      v-on:click="openSelect()"
     />
     <p>{{trackDuration}}</p>
   </div>
@@ -18,8 +18,8 @@
 
 <script>
 import PlayButton from "@/components/PlayButton.vue";
-import Playlist from "@/scripts/playlist.js";
-import db from "@/scripts/db";
+import Playlist from "@/script/playlist.js";
+import db from "@/script/db";
 
 function timeConversion(millisec) {
   var seconds = (millisec / 1000).toFixed(1);
@@ -52,16 +52,18 @@ export default {
     };
   },
   methods: {
-    ble: function() {
-      this.playlists = db.getPlaylists();
-      console.log(this.playlists)
-    },
-    addMusicToPlaylist: function(playlist) {
+    getPlaylist: function() {
+      this.playlists = db.getPlaylists();    },
+    openSelect: function() {
       this.isActive = !this.isActive;
+    },
+    addMusicToPlaylist(music, playlist) {
+      playlist.addMusic(music)
+      this.isActive = !this.isActive
     }
   },
   created() {
-    this.ble();
+    this.getPlaylist();
   },
   components: {
     PlayButton
