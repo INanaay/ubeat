@@ -4,23 +4,22 @@
     <img
       id="album_cover_img"
       :src="albumInfos.artworkUrl100"
-      
       alt="Italian Trulli"
       width="300"
       height="300"
     />
     <div id="album_resume">
+      <p class="album_infos_text">{{albumInfos.collectionCensoredName}} <br/> {{albumInfos.artistName}}</p>
+
+      <p class="album_infos_text">{{albumInfos.releaseDate}}</p>
       <span class="album_infos_text">
-          {{albumInfos.collectionCensoredName}}
+        <br />(1991)
         <br />
+        {{albumInfos.primaryGenreName}}
       </span>
       <span class="album_infos_text">
-        By
-        <br />{{albumInfos.artistName}} (1991)
-        <br />{{albumInfos.primaryGenreName}}
-      </span>
-      <span class="album_infos_text">
-        <br />{{albumInfos.trackCount}} tracks, {{albumTimeMillis}}
+        <br />
+        {{albumInfos.trackCount}} tracks, {{albumTimeMillis}}
         <br />
       </span>
       <button type="button" class="play-button">Play</button>
@@ -35,12 +34,21 @@
 
 <script>
 export default {
-    name: "AlbumInfos",
-    props: ["albumInfos", "albumTimeMillis"]
+  name: "AlbumInfos",
+  props: ["albumInfos", "albumTimeMillis"],
+  data: () => ({
+
+  }),
+  created() {
+    console.log("alubummmm", this.albumInfos)
+  }
 };
 </script>
 
 <style scoped>
+.album_infos_text {
+  text-align: center;
+}
 #album_cover_img {
   height: auto;
   max-width: 100%;
