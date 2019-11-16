@@ -36,9 +36,9 @@ export default {
         api.getArtistinfo("Indochine"),
         api.getArtistinfo("The Clash"),
         api.getArtistinfo("Jimi Hendrix"),
-        api.getArtistinfo("Justice"),
+        api.getArtistinfo("Daft Punk"),
         api.getArtistinfo("John Frusciante"),
-        api.getArtistinfo("Flea"),
+        api.getArtistinfo("Ultra Vomit"),
         api.getArtistinfo("Nirvana")
       ])
         .then(response => {

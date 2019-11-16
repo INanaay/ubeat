@@ -3,7 +3,7 @@
     <div id="container">
       <img
         id="background-image"
-        src="https://www.thenational.ae/image/policy:1.905572:1567597685/ac03-SEP-music-rhcp02.jpg?f=16x9&w=1200&$p$f$w=a6bfc83x"
+        v-bind:src="this.imageUrl"
       />
       <div id="basic-info-container">
         <h2 id="title">{{ this.artistInfo.artistName }}</h2>
@@ -37,26 +37,28 @@ export default {
   name: "ArtistDetail",
   components: { AlbumPreview },
   methods: {
-    getArtistInfos() {
+    async getArtistInfos() {
       const artistId = this.$route.params.id;
 
-      Promise.all([
+      const response = await Promise.all([
         api.getArtistById(artistId),
         api.getArtistAlbumsById(artistId)
-      ])
-        .then(response => {
-          this.artistInfo = response[0][0];
-          this.albums = response[1];
-        })
-        .catch(error => {
-          alert("Error fetching informations");
-          console.log(error);
-        });
+      ]);
+
+      if (!response) {
+        alert("Error fetching apis");
+        return;
+      }
+
+      this.artistInfo = response[0][0];
+      this.albums = response[1];
+      this.imageUrl = await api.getArtistImage(this.artistInfo.artistName);
     }
   },
   data: () => ({
     artistInfo: {},
-    albums: []
+    albums: [],
+    imageUrl: ""
   }),
   created() {
     this.getArtistInfos();
