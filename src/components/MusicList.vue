@@ -6,6 +6,7 @@
       v-bind:info="info"
       v-bind:itemId="index"
       v-bind:playlist="playlist"
+      v-bind:artistName="info.artistName"
     />
   </div>
 </template>

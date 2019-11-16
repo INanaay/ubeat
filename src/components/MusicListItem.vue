@@ -2,6 +2,7 @@
   <div class="item-container">
     <span v-if="isInPlaylist" v-on:click="deleteSong(itemId)" class="mdi mdi-trash-can" />
     <p>{{info.trackNumber}}</p>
+    <p v-if="isInPlaylist"> {{artistName}}</p>
     <p>{{title}}</p>
     <PlayButton v-bind:previewUrl="info.previewUrl" />
     <select v-if="isActive" size="3" style="position: relative">
@@ -39,7 +40,7 @@ function timeConversion(millisec) {
 
 export default {
   name: "MusicListItem",
-  props: ["info", "itemId", "playlist"],
+  props: ["info", "itemId", "playlist", "artistName"],
   data() {
     var trackDuration = new Date(this.info.trackTimeMillis);
     var time = timeConversion(this.info.trackTimeMillis);
@@ -54,7 +55,6 @@ export default {
   methods: {
     getPlaylist: function() {
       this.playlists = db.getPlaylists();
-      console.log(this.playlists)
     },
     openSelect: function() {
       this.isActive = !this.isActive;
@@ -64,9 +64,7 @@ export default {
       this.isActive = !this.isActive;
     },
     deleteSong(index) {
-      console.log("index", index)
       this.$props.playlist.removeMusicByPosition(index)
-      this.getPlaylist()
     }
   },
   created() {
