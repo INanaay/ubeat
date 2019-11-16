@@ -84,14 +84,52 @@ function initDB() {
   db.addPlaylist("Electro");
   db.addPlaylist("Empty");
 
+  API.getAlbumTracks("369711549")
+    .then(result => {
+      db.fillFakeDb(result);
+      db.addPlaylistMusicById(2, result[0]);
+      db.addPlaylistMusicById(2, result[1]);
+      db.addPlaylistMusicById(2, result[2]);
+      db.addPlaylistMusicById(2, result[3]);
+    })
+    .catch(err => console.log(err));
+
+  API.getAlbumTracks("1440872730")
+    .then(result => {
+      db.fillFakeDb(result);
+      db.addPlaylistMusicById(2, result[0]);
+      db.addPlaylistMusicById(2, result[1]);
+      db.addPlaylistMusicById(2, result[2]);
+      db.addPlaylistMusicById(2, result[3]);
+    })
+    .catch(err => console.log(err));
+
+  API.getAlbumTracks("1161539183")
+    .then(result => {
+      db.fillFakeDb(result);
+      db.addPlaylistMusicById(1, result[0]);
+      db.addPlaylistMusicById(1, result[2]);
+      db.addPlaylistMusicById(1, result[3]);
+    })
+    .catch(err => console.log(err));
+
   API.getAlbumTracks("991509751")
     .then(result => {
-      db.fillFakeDb(result)
+      db.fillFakeDb(result);
       db.addPlaylistMusicById(1, result[0]);
       db.addPlaylistMusicById(1, result[3]);
       db.addPlaylistMusicById(1, result[4]);
-      db.addPlaylistMusicById(2, result[6]);
-      db.addPlaylistMusicById(2, result[2]);
+      db.addPlaylistMusicById(1, result[6]);
+    })
+    .catch(err => console.log(err));
+
+  API.getAlbumTracks("1440920798")
+    .then(result => {
+      db.fillFakeDb(result);
+      db.addPlaylistMusicById(1, result[0]);
+      db.addPlaylistMusicById(1, result[1]);
+      db.addPlaylistMusicById(1, result[2]);
+      db.addPlaylistMusicById(1, result[3]);
     })
     .catch(err => console.log(err));
 }
