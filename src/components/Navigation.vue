@@ -1,14 +1,14 @@
 <template id="app">
-  <nav v-bind:class="{ hiddenNavbar: !showNavbar}">
+  <nav v-bind:class="{ hiddenNavbar: !showNavbar }">
     <ul v-show="showNavbar">
       <li id="nav-search-bar" class="navbar navleft">
-        <input type="search" placeholder="Search album or artist">
+        <input type="search" placeholder="Search album or artist" />
       </li>
       <li id="nav-home" class="navbar navleft">
         <router-link to="/">Home</router-link>
       </li>
       <li id="nav-album" class="navbar navleft">
-        <router-link to="/album">Album</router-link>
+        <router-link to="/albumOverview">Album</router-link>
       </li>
       <li id="nav-artist" class="navbar navleft">
         <router-link to="/artist">Artist</router-link>
@@ -28,10 +28,13 @@
       </li>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
-      <button id="nav-show-button"  v-on:click="showNavbar = true"><span class="mdi mdi-chevron-double-up"></span></button>
+      <button id="nav-show-button" v-on:click="showNavbar = true">
+        <span class="mdi mdi-chevron-double-up"></span>
+      </button>
     </div>
   </nav>
 </template>
+
 
 
 <script>
@@ -45,11 +48,11 @@
 </script>
 
 <style>
-  .hiddenNavbar {
-    background-color: white;
-    border: none;
-    margin-top: 0;
-  }
+.hiddenNavbar {
+  background-color: white;
+  border: none;
+  margin-top: 0;
+}
 
   .mdi-chevron-double-up {
   font-size: 20px;
@@ -105,19 +108,19 @@
     border: 2px solid black;
   }
 
-  #nav-user {
-    font-size: 25px;
-    color: lightgray;
-  }
+#nav-user {
+  font-size: 25px;
+  color: lightgray;
+}
 
-  #nav-search-bar > input {
-    width: 210px;
-    font-size: 18px;
-    border-radius: 5px;
-    border-color: #222326;
-    padding-left: 10px;
-    padding-top: 2px;
-  }
+#nav-search-bar > input {
+  width: 210px;
+  font-size: 18px;
+  border-radius: 5px;
+  border-color: #222326;
+  padding-left: 10px;
+  padding-top: 2px;
+}
 
   @media screen and (max-width: 992px) {
     .navleft {

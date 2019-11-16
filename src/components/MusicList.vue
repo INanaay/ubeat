@@ -1,9 +1,10 @@
 <template>
   <div id="musicList">
     <MusicListItem
-      v-for="info in infos"
+      v-for="(info, index) in infos"
       v-bind:key="info.id"
       v-bind:info="info"
+      v-bind:itemId="index"
     />
   </div>
 </template>
