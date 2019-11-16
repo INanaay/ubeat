@@ -18,7 +18,6 @@
 
 <script>
 import PlayButton from "@/components/PlayButton.vue";
-import Playlist from "@/script/playlist.js";
 import db from "@/script/db";
 
 function timeConversion(millisec) {

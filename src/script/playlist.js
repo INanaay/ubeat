@@ -22,8 +22,7 @@ class Playlist {
     return this.musics;
   }
 
-  setMusics(musicList) {
-    this.musics = [];
+  addAllMusic(musicList) {
     for (var data of musicList) {
       var music = new Music(this.musicsId, data);
       this.musicsId++;

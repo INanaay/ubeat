@@ -4,6 +4,7 @@
       <AlbumInfos
         v-bind:albumInfos="this.albumInfos"
         v-bind:albumTimeMillis="this.albumTimeMillis"
+        v-bind:infos="musicList.results"
       />
     </div>
     <div class="box sidebar2">

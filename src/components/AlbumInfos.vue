@@ -9,7 +9,11 @@
       height="300"
     />
     <div id="album_resume">
-      <p class="album_infos_text">{{albumInfos.collectionCensoredName}} <br/> {{albumInfos.artistName}}</p>
+      <p class="album_infos_text">
+        {{albumInfos.collectionCensoredName}}
+        <br />
+        {{albumInfos.artistName}}
+      </p>
 
       <p class="album_infos_text">{{albumInfos.releaseDate}}</p>
       <span class="album_infos_text">
@@ -28,17 +32,45 @@
         href="https://geo.music.apple.com/ca/album/blood-sugar-sex-magik/945581828?mt=1&app=music"
         style="margin:5px;display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=1991-09-24&kind=album&bubble=apple_music) no-repeat;width:158px;height:45px;"
       ></a>
+      <select v-if="isActive" size="3" style="position: relative">
+        <option
+          v-for="playlist in playlists"
+          v-on:click="addAllMusic(playlist)"
+          v-bind:key="playlist.id"
+        >{{playlist.name}}</option>
+      </select>
+      <img
+        src="../assets/plus.svg"
+        alt
+        style="height: 25px; lenght: 25xp"
+        v-on:click="openSelect()"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import db from "../script/db";
 export default {
   name: "AlbumInfos",
-  props: ["albumInfos", "albumTimeMillis"],
-  data: () => ({
-
-  })
+  props: ["albumInfos", "albumTimeMillis", "infos"],
+  data: () => ({ isActive: false, playlists: [] }),
+  methods: {
+    addAllMusic: function(playlist) {
+      playlist.addAllMusic(this.$props.infos);
+      this.isActive = !this.isActive;
+    },
+    openSelect: function() {
+      this.isActive = !this.isActive;
+    },
+    getPlaylist: function() {
+      this.playlists = db.getPlaylists();
+    }
+  },
+  created() {
+    this.getPlaylist();
+    console.log(this.playlists)
+  }
 };
 </script>
 
