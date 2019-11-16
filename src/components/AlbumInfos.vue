@@ -38,10 +38,7 @@ export default {
   props: ["albumInfos", "albumTimeMillis"],
   data: () => ({
 
-  }),
-  created() {
-    console.log("alubummmm", this.albumInfos)
-  }
+  })
 };
 </script>
 
