@@ -33,14 +33,14 @@
       <div class="header">
         <h1>{{ currentPlaylist.name }} playlist</h1>
       </div>
-      <MusicList v-bind:infos="currentPlaylist"/>
+      <MusicList v-bind:infos="currentPlaylist.formatMusicList()"/>
     </div>
   </div>
 </template>
 
 <script>
     import MusicList from "@/components/MusicList.vue";
-    import db from "@/scripts/db";
+    import db from "@/script/db";
 
     export default {
         name: "Playlist",
@@ -111,7 +111,7 @@
             },
             openPlaylist: function(playlist) {
                 this.musicListMode = true;
-                this.currentPlaylist = playlist.formatMusicList();
+                this.currentPlaylist = playlist;
             },
             backToPlaylists: function () {
                 this.musicListMode = false;

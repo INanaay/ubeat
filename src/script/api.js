@@ -28,9 +28,9 @@ export default {
       return response.data.results;
     });
   },
-  async getAlbumTracksByAlbumId(id) {
+  getAlbumTracksByAlbumId(id) {
     const url = apiUrl + "albums/" + id + "/tracks";
-    return await axios.get(url).then(response => {
+    return axios.get(url).then(response => {
       return response.data.results;
     });
   },

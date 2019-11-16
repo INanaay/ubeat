@@ -1,6 +1,6 @@
 const Album = require("./album.js");
 const Playlist = require("./playlist.js");
-const API = require("./api.js");
+const API = require("../script/api.js").default;
 
 class DB {
   constructor() {
@@ -84,7 +84,7 @@ function initDB() {
   db.addPlaylist("Electro");
   db.addPlaylist("Empty");
 
-  API.getAlbumTracks("369711549")
+  API.getAlbumTracksByAlbumId("369711549")
     .then(result => {
       db.fillFakeDb(result);
       db.addPlaylistMusicById(2, result[0]);
@@ -94,7 +94,7 @@ function initDB() {
     })
     .catch(err => console.log(err));
 
-  API.getAlbumTracks("1440872730")
+  API.getAlbumTracksByAlbumId("1440872730")
     .then(result => {
       db.fillFakeDb(result);
       db.addPlaylistMusicById(2, result[0]);
@@ -104,7 +104,7 @@ function initDB() {
     })
     .catch(err => console.log(err));
 
-  API.getAlbumTracks("1161539183")
+  API.getAlbumTracksByAlbumId("1161539183")
     .then(result => {
       db.fillFakeDb(result);
       db.addPlaylistMusicById(1, result[0]);
@@ -113,7 +113,7 @@ function initDB() {
     })
     .catch(err => console.log(err));
 
-  API.getAlbumTracks("991509751")
+  API.getAlbumTracksByAlbumId("991509751")
     .then(result => {
       db.fillFakeDb(result);
       db.addPlaylistMusicById(1, result[0]);
@@ -123,7 +123,7 @@ function initDB() {
     })
     .catch(err => console.log(err));
 
-  API.getAlbumTracks("1440920798")
+  API.getAlbumTracksByAlbumId("1440920798")
     .then(result => {
       db.fillFakeDb(result);
       db.addPlaylistMusicById(1, result[0]);
