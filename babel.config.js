@@ -1,8 +1,4 @@
 module.exports = {
-  presets: [
-    '@vue/app',
-  ],
-  ignore: [
-    'src/script/*'
-  ]
+  presets: [["@vue/app", { useBuiltIns: "entry" }]],
+  ignore: ["src/script/*"]
 };
