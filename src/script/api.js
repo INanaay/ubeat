@@ -47,7 +47,8 @@ export default {
     const url = apiUrl + "albums/" + id;
     return axios.get(url).then(response => {
       return response.data.results[0];
-    })},
+    });
+  },
   async getArtistImage(artistName) {
     const response = await spotifyApi.searchArtists(artistName);
     return response.body.artists.items[0].images[0].url;
