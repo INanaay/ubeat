@@ -1,20 +1,12 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <div id="container">
-      <img id="background-image" v-bind:src="this.imageUrl" />
-      <div id="basic-info-container">
-        <h2 id="title">{{ this.artistInfo.artistName }}</h2>
-        <span>{{ this.artistInfo.primaryGenreName }}</span>
-=======
-    <div id="header">
+    <div id="artist-header">
       <div id="container">
         <img id="artist-image" v-bind:src="this.imageUrl" />
         <div id="basic-info-container">
           <h2 id="title">{{ this.artistInfo.artistName }}</h2>
           <span>{{ this.artistInfo.primaryGenreName }}</span>
         </div>
->>>>>>> l2-artist-image
       </div>
       <a
         id="itunes-button"
@@ -96,12 +88,11 @@ export default {
   border-radius: 50%;
 }
 
-#header {
+#artist-header {
   padding-left: 50px;
 }
 
 #container {
-  align-items: center;
   color: white;
   display: flex;
   flex-direction: row;
