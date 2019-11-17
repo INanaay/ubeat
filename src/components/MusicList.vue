@@ -7,6 +7,7 @@
       v-bind:itemId="index"
       v-bind:playlist="playlist"
       v-bind:artistName="info.artistName"
+      v-bind:trackDuration="info.trackTimeMillis"
     />
   </div>
 </template>

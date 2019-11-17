@@ -1,11 +1,6 @@
 const Music = require("./music");
 
-var Color = [
-  "#2980b9",
-  "#e74c3c",
-  "#2ecc71",
-  "#f39c12",
-];
+var Color = ["#2980b9", "#e74c3c", "#2ecc71", "#f39c12"];
 
 class Playlist {
   constructor(id, name, musics = []) {
@@ -40,6 +35,7 @@ class Playlist {
 
   removeMusicByPosition(position) {
     this.musics.splice(position, 1);
+    this.size--;
   }
 
   removeMusicById(id) {

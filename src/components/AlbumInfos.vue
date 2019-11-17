@@ -15,10 +15,8 @@
         {{albumInfos.artistName}}
       </p>
 
-      <p class="album_infos_text">{{albumInfos.releaseDate}}</p>
+      <p class="album_infos_text">{{albumInfos.releaseDate.split("-")[0]}}</p>
       <span class="album_infos_text">
-        <br />(1991)
-        <br />
         {{albumInfos.primaryGenreName}}
       </span>
       <span class="album_infos_text">
@@ -54,7 +52,10 @@ import db from "../script/db";
 export default {
   name: "AlbumInfos",
   props: ["albumInfos", "albumTimeMillis", "infos"],
-  data: () => ({ isActive: false, playlists: [] }),
+  data: () => ({
+    isActive: false,
+    playlists: [],
+  }),
   methods: {
     addAllMusic: function(playlist) {
       playlist.addAllMusic(this.$props.infos);
@@ -69,7 +70,6 @@ export default {
   },
   created() {
     this.getPlaylist();
-    console.log(this.playlists)
   }
 };
 </script>
