@@ -23,9 +23,12 @@ export default {
     async populateAlbum() {
       Promise.all([
         api.getAlbuminfo("Back in Black"),
-        api.getAlbuminfo("Recess"),
         api.getAlbuminfo("The Wall"),
-        api.getAlbuminfo("Stadium Arcadium")
+        api.getAlbuminfo("Stadium Arcadium"),
+        api.getAlbuminfo("Heligoland"),
+        api.getAlbuminfo("Mr Sal"),
+        api.getAlbuminfo("Alph Lauren 3"),
+        api.getAlbuminfo("Recess"),
       ])
         .then(response => {
           for (let index = 0; index < response.length; index++) {
