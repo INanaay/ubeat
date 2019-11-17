@@ -17,8 +17,7 @@ class Playlist {
     return this.musics;
   }
 
-  setMusics(musicList) {
-    this.musics = [];
+  addAllMusic(musicList) {
     for (var data of musicList) {
       var music = new Music(this.musicsId, data);
       this.musicsId++;
@@ -32,6 +31,11 @@ class Playlist {
     this.musicsId++;
     this.size++;
     this.musics.push(music);
+  }
+
+  removeMusicByPosition(position) {
+    this.musics.splice(position, 1);
+    this.size--;
   }
 
   removeMusicById(id) {

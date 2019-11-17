@@ -33,7 +33,7 @@
       <div class="header">
         <h1>{{ currentPlaylist.name }} playlist</h1>
       </div>
-      <MusicList v-bind:infos="currentPlaylist.formatMusicList()"/>
+      <MusicList v-bind:infos="currentPlaylist.formatMusicList()" v-bind:playlist="currentPlaylist"/>
     </div>
   </div>
 </template>
