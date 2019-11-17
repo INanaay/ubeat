@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1></h1>
     <img
       id="album_cover_img"
       :src="albumInfos.artworkUrl100"
@@ -10,39 +9,34 @@
     />
     <div id="album_resume">
       <p class="album_infos_text">
-        {{albumInfos.collectionCensoredName}}
-        <br />
+        {{albumInfos.collectionCensoredName}}, by
         {{albumInfos.artistName}}
       </p>
-
-      <p class="album_infos_text">{{albumInfos.releaseDate.split("-")[0]}}</p>
-      <span class="album_infos_text">
-        {{albumInfos.primaryGenreName}}
-      </span>
-      <span class="album_infos_text">
-        <br />
+      <p class="album_infos_text">{{albumInfos.releaseDate.split("-")[0]}}, {{albumInfos.primaryGenreName}}</p>
+      <p class="album_infos_text">
         {{albumInfos.trackCount}} tracks, {{albumTimeMillis}}
-        <br />
-      </span>
+      </p>
       <button type="button" class="play-button">Play</button>
-      <br />
+      <img
+        src="../assets/plus.svg"
+        alt
+        class="album_infos_text"
+        style="height: 25px; lenght: 25xp"
+        v-on:click="openSelect()"
+      />
+      <br/>
       <a
         href="https://geo.music.apple.com/ca/album/blood-sugar-sex-magik/945581828?mt=1&app=music"
         style="margin:5px;display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=1991-09-24&kind=album&bubble=apple_music) no-repeat;width:158px;height:45px;"
       ></a>
-      <select v-if="isActive" size="3" style="position: relative">
+      <select class="album_infos_text" v-if="isActive" size="3" style="position: relative">
         <option
           v-for="playlist in playlists"
           v-on:click="addAllMusic(playlist)"
           v-bind:key="playlist.id"
         >{{playlist.name}}</option>
       </select>
-      <img
-        src="../assets/plus.svg"
-        alt
-        style="height: 25px; lenght: 25xp"
-        v-on:click="openSelect()"
-      />
+      <br/>
     </div>
   </div>
 </template>
@@ -101,5 +95,10 @@ export default {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+}
+.album_resume {
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 </style>

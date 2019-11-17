@@ -8,7 +8,7 @@
       />
     </div>
     <div class="box sidebar2">
-      <MusicList v-bind:infos="musicList.results"/>
+      <MusicList v-bind:infos="musicList.results" />
     </div>
   </div>
 </template>
@@ -93,30 +93,26 @@ body {
 
 .wrapper {
   display: grid;
+  width: 100%;
   grid-template-areas:
     "sidebar"
     "sidebar2";
 }
 
 .box {
-  background-color: #1b1b1b;
   color: #fff;
-}
-
-.music-list-grid-container {
-  margin: 4px;
-  display: grid;
-  grid-template-columns: 10% 10% 65% 15%;
-  padding: 5px;
-  border-bottom-style: solid;
-  border-width: 1px;
-  border-color: gray;
 }
 
 @media only screen and (min-width: 600px) {
   .wrapper {
-    grid-template-columns: 40% auto;
+    grid-template-columns: 25% auto;
     grid-template-areas: "sidebar sidebar2";
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .wrapper {
+    font-size: 12px;
   }
 }
 </style>
