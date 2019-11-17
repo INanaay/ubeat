@@ -1,10 +1,20 @@
 <template>
   <div>
+<<<<<<< HEAD
     <div id="container">
       <img id="background-image" v-bind:src="this.imageUrl" />
       <div id="basic-info-container">
         <h2 id="title">{{ this.artistInfo.artistName }}</h2>
         <span>{{ this.artistInfo.primaryGenreName }}</span>
+=======
+    <div id="header">
+      <div id="container">
+        <img id="artist-image" v-bind:src="this.imageUrl" />
+        <div id="basic-info-container">
+          <h2 id="title">{{ this.artistInfo.artistName }}</h2>
+          <span>{{ this.artistInfo.primaryGenreName }}</span>
+        </div>
+>>>>>>> l2-artist-image
       </div>
       <a
         id="itunes-button"
@@ -49,7 +59,8 @@ export default {
 
       this.artistInfo = response[0][0];
       this.albums = response[1];
-      this.imageUrl = await api.getArtistImage(this.artistInfo.artistName);
+      this.imageUrl = this.albums[0].artworkUrl100;
+      console.log(this.albums);
     }
   },
   data: () => ({
@@ -79,16 +90,25 @@ export default {
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
+#artist-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+#header {
+  padding-left: 50px;
+}
+
 #container {
-  position: relative;
-  color: white;
-  justify-content: center;
   align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: row;
 }
 
 #basic-info-container {
   background-color: transparent;
-  position: absolute;
   top: 10%;
   display: flex;
   flex-direction: column;
@@ -144,6 +164,11 @@ export default {
     font-size: 15px;
   }
 
+  #artist-image {
+    width: 100px;
+    height: 100px;
+  }
+
   #background-image {
     height: 175px;
   }
@@ -168,6 +193,16 @@ export default {
 
   #basic-info-container span {
     font-size: 10px;
+  }
+
+  #artist-image {
+    width: 75px;
+    height: 75px;
+  }
+
+  .album-cover {
+    height: 75px;
+    width: 75px;
   }
 
   .album-artist a {
