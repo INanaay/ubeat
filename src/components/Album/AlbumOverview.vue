@@ -28,13 +28,13 @@ export default {
         api.getAlbuminfo("Heligoland"),
         api.getAlbuminfo("Mr Sal"),
         api.getAlbuminfo("Alph Lauren 3"),
-        api.getAlbuminfo("Recess"),
+        api.getAlbuminfo("Recess")
       ])
         .then(response => {
           for (let index = 0; index < response.length; index++) {
             this.albums.push(response[index][0]);
           }
-          console.log(this.albums)
+          console.log(this.albums);
         })
         .catch(error => {
           alert(error);
@@ -48,5 +48,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

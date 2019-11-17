@@ -1,19 +1,35 @@
 <template>
   <div class="item-container">
-    <span v-if="isInPlaylist" v-on:click="deleteSong(itemId)" class="mdi mdi-trash-can" />
-    <p style="float: left; padding: 5px; margin: 3px" v-if="!isInPlaylist">{{info.trackNumber}}</p>
-    <p v-if="isInPlaylist">{{artistName}}</p>
-    <p style="float: left; padding: 5px; margin: 3px;">{{info.trackName}}</p>
-    <PlayButton v-bind:previewUrl="info.previewUrl"/>
-    <img src="../assets/plus.svg" alt style="height: 25px; lenght: 25px; padding: 5px; margin: 3px;" v-on:click="openSelect()" />
+    <span
+      v-if="isInPlaylist"
+      v-on:click="deleteSong(itemId)"
+      class="mdi mdi-trash-can"
+    />
+    <p style="float: left; padding: 5px; margin: 3px" v-if="!isInPlaylist">
+      {{ info.trackNumber }}
+    </p>
+    <p v-if="isInPlaylist">{{ artistName }}</p>
+    <p style="float: left; padding: 5px; margin: 3px;">
+      {{ info.trackName }}
+    </p>
+    <PlayButton v-bind:previewUrl="info.previewUrl" />
+    <img
+      src="../assets/plus.svg"
+      alt
+      style="height: 25px; lenght: 25px; padding: 5px; margin: 3px;"
+      v-on:click="openSelect()"
+    />
     <select v-if="isActive" size="3" style="position: relative">
       <option
-        v-for="(playlist) in playlists"
+        v-for="playlist in playlists"
         v-on:click="addMusicToPlaylist(info, playlist)"
         v-bind:key="playlist.id"
-      >{{playlist.name}}</option>
+        >{{ playlist.name }}</option
+      >
     </select>
-    <p style="float: left; padding: 5px; margin: 3px">{{this.timeConversion(trackDuration)}}</p>
+    <p style="float: left; padding: 5px; margin: 3px">
+      {{ this.timeConversion(trackDuration) }}
+    </p>
     <div id="snackbar-delete">Music deleted</div>
   </div>
 </template>

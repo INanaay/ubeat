@@ -1,5 +1,8 @@
 <template>
-  <router-link class="album-preview" v-bind:to="'/album/' + albumData.collectionId">
+  <router-link
+    class="album-preview"
+    v-bind:to="'/album/' + albumData.collectionId"
+  >
     <img v-bind:src="albumData.artworkUrl100" />
     <span>
       {{ albumData.collectionName }} <br />
@@ -11,7 +14,7 @@
 <script>
 export default {
   name: "AlbumPreview",
-  props: ["albumData"],
+  props: ["albumData"]
 };
 </script>
 

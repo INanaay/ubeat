@@ -9,12 +9,15 @@
     />
     <div id="album_resume">
       <p class="album_infos_text">
-        {{albumInfos.collectionCensoredName}}, by
-        {{albumInfos.artistName}}
+        {{ albumInfos.collectionCensoredName }}, by
+        {{ albumInfos.artistName }}
       </p>
-      <p class="album_infos_text">{{albumInfos.releaseDate.split("-")[0]}}, {{albumInfos.primaryGenreName}}</p>
       <p class="album_infos_text">
-        {{albumInfos.trackCount}} tracks, {{albumTimeMillis}}
+        {{ albumInfos.releaseDate.split("-")[0] }},
+        {{ albumInfos.primaryGenreName }}
+      </p>
+      <p class="album_infos_text">
+        {{ albumInfos.trackCount }} tracks, {{ albumTimeMillis }}
       </p>
       <button type="button" class="play-button">Play</button>
       <img
@@ -34,7 +37,8 @@
           v-for="playlist in playlists"
           v-on:click="addAllMusic(playlist)"
           v-bind:key="playlist.id"
-        >{{playlist.name}}</option>
+          >{{ playlist.name }}</option
+        >
       </select>
       <br/>
     </div>
@@ -48,7 +52,7 @@ export default {
   props: ["albumInfos", "albumTimeMillis", "infos"],
   data: () => ({
     isActive: false,
-    playlists: [],
+    playlists: []
   }),
   methods: {
     addAllMusic: function(playlist) {
@@ -95,10 +99,5 @@ export default {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-}
-.album_resume {
-  align-content: center;
-  align-items: center;
-  justify-content: center;
 }
 </style>

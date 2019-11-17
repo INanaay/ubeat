@@ -1,10 +1,7 @@
 <template>
   <div>
     <div id="container">
-      <img
-        id="background-image"
-        v-bind:src="this.imageUrl"
-      />
+      <img id="background-image" v-bind:src="this.imageUrl" />
       <div id="basic-info-container">
         <h2 id="title">{{ this.artistInfo.artistName }}</h2>
         <span>{{ this.artistInfo.primaryGenreName }}</span>
