@@ -1,12 +1,9 @@
 <template>
   <div id="home">
-    <div class="box">
-      <img class="banner" src="../assets/banner.png" />
-      <div class="text">
-        <h2>Ubeat</h2>
-        <br />
-        <p>Share music with your friend</p>
-      </div>
+    <div id="header">
+      <h2>Ubeat</h2>
+      <hr class="new5" />
+      <p>Share music with your friend</p>
     </div>
     <h1>Home</h1>
     <div>
@@ -92,33 +89,23 @@ export default {
 </script>
 
 <style>
-.box {
-  position: relative;
-  display: flex; /* Make the width of box same as image */
-}
-
-.box img {
-  -webkit-mask-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(rgba(0, 0, 0, 1)),
-    to(rgba(0, 0, 0, 0))
-  );
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-}
-
-.box .text {
-  position: absolute;
-  z-index: 999;
-  margin: 0 auto;
-  padding-bottom: 200px;
-  left: 0;
-  right: 0;
-  top: 10%;
+#header {
   text-align: center;
-  font-weight: bold;
+  font-size: 45px;
+}
+
+#header h2 {
+  margin: 0;
+}
+
+#header p {
   font-size: 30px;
+}
+
+hr.new5 {
+  width: 500px;
+  border: 6px solid White;
+  border-radius: 5px;
 }
 
 #home {
@@ -131,14 +118,20 @@ export default {
   padding-left: 30px;
 }
 
-@media screen and (max-width: 600px) {
-  .box .text {
-    top: 0;
-    font-size: 10px;
+@media screen and (max-width: 992px) {
+  .title {
+    font-size: 40px;
   }
-  .box .text h1 {
-    top: 0;
-    font-size: 15px;
+  #header {
+    font-size: 35px;
+  }
+  #header p {
+    font-size: 20px;
+  }
+  hr.new5 {
+    width: 200px;
+    border: 6px solid White;
+    border-radius: 5px;
   }
 }
 </style>
