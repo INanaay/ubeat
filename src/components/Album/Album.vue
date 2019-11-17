@@ -14,8 +14,8 @@
 </template>
 <script>
 import axios from "axios";
-import MusicList from "@/components/MusicList";
-import AlbumInfos from "@/components/AlbumInfos.vue";
+import MusicList from "../MusicList";
+import AlbumInfos from "./AlbumInfos";
 
 function timeConversion(millisec) {
   var seconds = (millisec / 1000).toFixed(1);

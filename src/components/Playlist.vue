@@ -173,7 +173,7 @@
 
 
   .cardTitle {
-    color: #1B1B1B;
+    color: white;
     display: block;
     text-align: center;
     font-size: 3vw;
@@ -182,7 +182,7 @@
   }
 
   .songSize {
-    color: #1B1B1B;
+    color: white;
     text-align: center;
     display: block;
     font-size: 2vw;

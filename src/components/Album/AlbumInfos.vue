@@ -18,7 +18,7 @@
       </p>
       <button type="button" class="play-button">Play</button>
       <img
-        src="../assets/plus.svg"
+        src="../../assets/plus.svg"
         alt
         class="album_infos_text"
         style="height: 25px; lenght: 25xp"
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import db from "../script/db";
+import db from "../../script/db";
 export default {
   name: "AlbumInfos",
   props: ["albumInfos", "albumTimeMillis", "infos"],

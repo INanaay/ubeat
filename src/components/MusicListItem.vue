@@ -93,6 +93,7 @@ export default {
   align-items: center;
   align-content: center;
   justify-content: space-between;
+  color: white;
 }
 
 #snackbar-delete {
