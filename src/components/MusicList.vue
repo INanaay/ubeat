@@ -22,10 +22,9 @@ export default {
   },
   props: ["infos", "playlist"],
   created() {
-    console.log(this.$props)
+    console.log(this.$props);
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

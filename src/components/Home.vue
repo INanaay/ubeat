@@ -109,9 +109,7 @@ hr.new5 {
 }
 
 #home {
-  background-color: #1b1b1b;
   color: white;
-  font-family: "Poppins", sans-serif;
 }
 
 .title {
