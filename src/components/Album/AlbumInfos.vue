@@ -19,7 +19,6 @@
       <p class="album_infos_text">
         {{ albumInfos.trackCount }} tracks, {{ albumTimeMillis }}
       </p>
-      <button type="button" class="play-button">Play</button>
       <img
         src="../../assets/plus.svg"
         alt
@@ -27,12 +26,18 @@
         style="height: 25px; lenght: 25xp"
         v-on:click="openSelect()"
       />
-      <br/>
+      <br />
       <a
-        href="https://geo.music.apple.com/ca/album/blood-sugar-sex-magik/945581828?mt=1&app=music"
-        style="margin:5px;display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=1991-09-24&kind=album&bubble=apple_music) no-repeat;width:158px;height:45px;"
+        id="itunes-button"
+        v-bind:href="albumInfos.collectionViewUrl"
+        style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/lockup.svg?kind=artist&bubble=apple_music&style=standard-white) no-repeat;width:140px;height:30px;"
       ></a>
-      <select class="album_infos_text" v-if="isActive" size="3" style="position: relative">
+      <select
+        class="album_infos_text"
+        v-if="isActive"
+        size="3"
+        style="position: relative"
+      >
         <option
           v-for="playlist in playlists"
           v-on:click="addAllMusic(playlist)"
@@ -40,7 +45,7 @@
           >{{ playlist.name }}</option
         >
       </select>
-      <br/>
+      <br />
     </div>
   </div>
 </template>
@@ -73,6 +78,13 @@ export default {
 </script>
 
 <style scoped>
+#album_resume {
+  text-align: center;
+}
+
+#album_resume a {
+  margin-top: 20px;
+}
 .album_infos_text {
   text-align: center;
 }
@@ -85,19 +97,5 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-}
-
-.play-button {
-  font-family: "Poppins", sans-serif;
-  background-color: #4caf50;
-  border: none;
-  border-radius: 25%;
-  color: white;
-  padding: 14px 40px;
-  margin: 5px;
-  font-size: 18;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
 }
 </style>

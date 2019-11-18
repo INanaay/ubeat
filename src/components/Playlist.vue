@@ -172,10 +172,6 @@ export default {
   border-radius: 10px;
 }
 
-.blue {
-  color: #2980b9;
-}
-
 option {
   font-size: 15px;
 }

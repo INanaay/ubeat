@@ -2,7 +2,7 @@
   <div>
     <div id="artist-header">
       <div id="container">
-        <img id="artist-image" v-bind:src="this.imageUrl" />
+        <img id="artist-image" v-bind:src="this.imageUrl" alt="" />
         <div id="basic-info-container">
           <h2 id="title">{{ this.artistInfo.artistName }}</h2>
           <span>{{ this.artistInfo.primaryGenreName }}</span>

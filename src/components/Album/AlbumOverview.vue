@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div>
+    <h1>Album</h1>
+    <div id="album-container">
       <AlbumPreview
         v-bind:albumData="item"
         v-bind:key="'item' + index"
@@ -48,4 +49,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#album-container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+</style>
