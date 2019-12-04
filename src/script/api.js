@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const LastFM = require("last-fm");
+
+const lastFmKey = "6367fd015b143157df97f99f9bcb003d";
+const lastfm = new LastFM(lastFmKey);
 const apiUrl = "http://ubeat.herokuapp.com/unsecure/";
 
 export default {
@@ -39,5 +43,7 @@ export default {
     return axios.get(url).then(response => {
       return response.data.results[0];
     });
-  }
+  },
+  lastfm : lastfm,
+
 };

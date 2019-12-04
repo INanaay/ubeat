@@ -25,6 +25,12 @@
         />
       </div>
     </div>
+    <div >
+      <h1>Biography</h1>
+      <div id="bio-container">
+      <PRE id="summary-font">{{this.summary}}</PRE>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -52,11 +58,23 @@ export default {
       this.artistInfo = response[0][0];
       this.albums = response[1];
       this.imageUrl = this.albums[0].artworkUrl100;
-      console.log(this.albums);
+
+      api.lastfm.artistInfo(
+        { name: this.artistInfo.artistName },
+        (err, data) => {
+          if (err) {
+            alert(err);
+          } else {
+              console.log(data)
+              this.summary = data.summary;}
+          console.log(this.summary)
+        }
+      );
     }
   },
   data: () => ({
     artistInfo: {},
+      summary: "",
     albums: [],
     imageUrl: ""
   }),
@@ -80,6 +98,21 @@ export default {
     to(rgba(0, 0, 0, 0))
   );
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+#bio-container {
+  margin: 35px 35px 35px;
+
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: keep-all;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  overflow: auto;
 }
 
 #artist-image {
@@ -173,6 +206,10 @@ export default {
   font-size: 13px;
 }
 
+pre {
+  font-size: 14px;
+}
+
 @media screen and (max-width: 600px) {
   #title {
     font-size: 25px;
@@ -198,6 +235,10 @@ export default {
 
   .album-artist a {
     font-size: 10px;
+  }
+
+  pre {
+    font-size: 12px;
   }
 }
 </style>
