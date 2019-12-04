@@ -58,16 +58,18 @@ export default {
     },
 
     async getMoreArtistsInfo() {
-      console.log("Tamere");
-      for (const artist of this.results.artists) {
-        console.log(artist.artistName);
-        const response = await api.getArtistinfo(artist.artistName);
+      for (const artist in this.results.artists) {
+        const response = await api.getArtistinfo(
+          this.results.artists[artist].artistName
+        );
+        console.log(response[0])
         if (Object.hasOwnProperty.call(response[0], "artworkUrl100")) {
-            artist.artworkUrl100 = response[0].artworkUrl100;
-            console.log(artist)
-        }
-        else
-            console.log("Could not retrieve artist image");
+          this.$set(
+            this.results.artists[artist],
+            "artworkUrl100",
+            response[0].artworkUrl100
+          );
+        } else console.log("Could not retrieve artist image");
       }
     },
     async search() {
