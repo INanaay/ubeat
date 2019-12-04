@@ -25,10 +25,10 @@
         />
       </div>
     </div>
-    <div >
+    <div>
       <h1>Biography</h1>
       <div id="bio-container">
-      <PRE id="summary-font">{{this.summary}}</PRE>
+        <PRE id="summary-font">{{ this.summary }}</PRE>
       </div>
     </div>
   </div>
@@ -65,16 +65,17 @@ export default {
           if (err) {
             alert(err);
           } else {
-              console.log(data)
-              this.summary = data.summary;}
-          console.log(this.summary)
+            console.log(data);
+            this.summary = data.summary;
+          }
+          console.log(this.summary);
         }
       );
     }
   },
   data: () => ({
     artistInfo: {},
-      summary: "",
+    summary: "",
     albums: [],
     imageUrl: ""
   }),
@@ -102,7 +103,6 @@ export default {
 
 #bio-container {
   margin: 35px 35px 35px;
-
 }
 
 pre {

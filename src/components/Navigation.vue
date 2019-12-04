@@ -2,7 +2,11 @@
   <nav v-bind:class="{ hiddenNavbar: !showNavbar }">
     <ul v-show="showNavbar">
       <li id="nav-search-bar" class="navbar navleft">
-        <input type="search" placeholder="Search album or artist" />
+        <input
+          type="search"
+          placeholder="Search album or artist"
+          v-on:keyup.enter="submit($event)"
+        />
       </li>
       <li id="nav-home" class="navbar navleft">
         <router-link to="/">Home</router-link>
@@ -39,6 +43,18 @@
 
 <script>
 module.exports = {
+  methods: {
+    submit(event) {
+        console.log(event)
+        console.log("Trying to change route")
+        console.log(event.srcElement.value)
+        this.$router.push('Search')
+        this.$router.push({ name: 'Search', params: { tag: event.srcElement.value } })
+
+
+
+    }
+  },
   data: function() {
     return {
       showNavbar: window.innerWidth >= 992

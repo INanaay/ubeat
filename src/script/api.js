@@ -44,6 +44,18 @@ export default {
       return response.data.results[0];
     });
   },
-  lastfm : lastfm,
-
+  getSearchResults(querry) {
+    const url = apiUrl + "search";
+    return axios
+      .get(url, {
+        params: {
+          q: querry
+        }
+      })
+      .then(response => {
+        console.log(response);
+        return response;
+      });
+  },
+  lastfm: lastfm
 };

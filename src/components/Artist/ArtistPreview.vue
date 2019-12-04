@@ -11,7 +11,7 @@
 <script>
 export default {
   name: "ArtistPreview",
-  props: ["artistData"]
+  props: ["artistData"],
 };
 </script>
 
