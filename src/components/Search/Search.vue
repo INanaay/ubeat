@@ -23,6 +23,17 @@
         />
       </div>
     </div>
+
+    <div v-if="results.tracks.length !== 0">
+      <h1>Musics</h1>
+      <div id="music-container">
+        <SearchMusicItem
+          v-bind:key="'item' + i"
+          v-for="(item, i) in results.tracks"
+          v-bind:musicData="item"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,10 +41,11 @@
 import api from "@/script/api";
 import ArtistPreview from "../Artist/ArtistPreview";
 import AlbumPreview from "../Album/AlbumPreview";
+import SearchMusicItem from "../SearchMusicItem";
 
 export default {
   name: "Search",
-  components: { ArtistPreview, AlbumPreview },
+  components: { ArtistPreview, AlbumPreview, SearchMusicItem},
   methods: {
     setSearchTag() {
       this.searchTag = this.$route.params.tag;
@@ -87,9 +99,10 @@ export default {
     results: { tracks: [], albums: [], artists: [], people: [] }
   }),
   watch: {
-    '$route.params.tag'(newTag, oldTag) {
-      this.searchTag = this.$route.params.tag;
+    '$route.params.tag'(newTag, _) {
+      this.searchTag = newTag
       this.results =  { tracks: [], albums: [], artists: [], people: [] }
+      console.log("la liste des musics", this.results.tracks)
       this.search();
     }
   },
