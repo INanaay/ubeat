@@ -43,9 +43,9 @@ export default new Router({
       component: Playlist
     },
     {
-      path: "/search",
+      path: "/search/:tag",
       name: "Search",
       component: Search
-    },
+    }
   ]
 });

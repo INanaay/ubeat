@@ -62,7 +62,7 @@ export default {
         const response = await api.getArtistinfo(
           this.results.artists[artist].artistName
         );
-        console.log(response[0])
+        console.log(response[0]);
         if (Object.hasOwnProperty.call(response[0], "artworkUrl100")) {
           this.$set(
             this.results.artists[artist],
@@ -86,10 +86,17 @@ export default {
     searchTag: "",
     results: { tracks: [], albums: [], artists: [], people: [] }
   }),
-  mounted() {
+  watch: {
+    '$route.params.tag'(newTag, oldTag) {
+      this.searchTag = this.$route.params.tag;
+      this.results =  { tracks: [], albums: [], artists: [], people: [] }
+      this.search();
+    }
+  },
+  created() {
     this.setSearchTag();
     this.search();
-  }
+  },
 };
 </script>
 

@@ -48,11 +48,7 @@ module.exports = {
         console.log(event)
         console.log("Trying to change route")
         console.log(event.srcElement.value)
-        this.$router.push('Search')
         this.$router.push({ name: 'Search', params: { tag: event.srcElement.value } })
-
-
-
     }
   },
   data: function() {
