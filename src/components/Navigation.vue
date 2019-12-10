@@ -13,20 +13,23 @@
       <li id="nav-artist" class="navbar navleft">
         <router-link to="/artist">Artist</router-link>
       </li>
-      <li id="nav-user-settings" class="navbar navleft">
-        <router-link to="">User Settings</router-link>
-      </li>
       <li id="nav-playlist" class="navbar navleft">
         <router-link to="/playlist">Playlist</router-link>
       </li>
       <li id="nav-disconnect" class="navbar navright">
-        <router-link to="">Disconnect</router-link>
+        <router-link to="">Logout</router-link>
         <button v-on:click="showNavbar = false" id="nav-hide-btn">
           <span class="mdi mdi-window-close"></span>
         </button>
       </li>
-      <li id="nav-user" class="navbar navright">
-        Roger Martin
+      <li id="nav-disconnect" class="navbar navright">
+        <router-link to="/login">Login</router-link>
+      </li>
+      <li id="nav-user" class="navbar navright" v-show="storeState.username">
+        {{ storeState.username }}
+      </li>
+      <li id="nav-user-settings" class="navbar navright">
+        <router-link to="">User Settings</router-link>
       </li>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
@@ -38,11 +41,17 @@
 </template>
 
 <script>
-module.exports = {
-  data: function() {
-    return {
-      showNavbar: window.innerWidth >= 992
-    };
+import { store } from "../script/user";
+export default {
+  data: () => ({
+    storeState: store.state
+  }),
+  methods: {
+    showNavbar: function() {
+      return {
+        showNavbar: window.innerWidth >= 992
+      };
+    }
   }
 };
 </script>
