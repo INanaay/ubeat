@@ -45,9 +45,6 @@
 module.exports = {
   methods: {
     submit(event) {
-        console.log(event)
-        console.log("Trying to change route")
-        console.log(event.srcElement.value)
         this.$router.push({ name: 'Search', params: { tag: event.srcElement.value } })
     }
   },

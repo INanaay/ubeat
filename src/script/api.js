@@ -38,6 +38,21 @@ export default {
       return response.data.results;
     });
   },
+  getSearchUser(userInput) {
+    userInput;
+    // Add this code and change url to get user from real user
+    // const url = apiUrl + "search/users";
+    // .get(url, {
+    //   params: {
+    //     q: userInput
+    //   }
+    // })
+    const url = "http://www.mocky.io/v2/5df04fe82f0000acc18e0f8e";
+    return axios.get(url).then(response => {
+      console.log("response uszer", response);
+      return response;
+    });
+  },
   getAlbumInfoByAlbumId(id) {
     const url = apiUrl + "albums/" + id;
     return axios.get(url).then(response => {

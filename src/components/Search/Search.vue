@@ -34,6 +34,17 @@
         />
       </div>
     </div>
+
+    <div v-if="results.tracks.length !== 0">
+      <h1>User</h1>
+      <div id="people-container">
+        <SearchUserItem
+          v-bind:key="'item' + i"
+          v-for="(item, i) in results.people"
+          v-bind:peopleData="item"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -42,10 +53,11 @@ import api from "@/script/api";
 import ArtistPreview from "../Artist/ArtistPreview";
 import AlbumPreview from "../Album/AlbumPreview";
 import SearchMusicItem from "../SearchMusicItem";
+import SearchUserItem from "../SearchUserItem";
 
 export default {
   name: "Search",
-  components: { ArtistPreview, AlbumPreview, SearchMusicItem},
+  components: { ArtistPreview, AlbumPreview, SearchMusicItem, SearchUserItem },
   methods: {
     setSearchTag() {
       this.searchTag = this.$route.params.tag;
@@ -74,7 +86,6 @@ export default {
         const response = await api.getArtistinfo(
           this.results.artists[artist].artistName
         );
-        console.log(response[0]);
         if (Object.hasOwnProperty.call(response[0], "artworkUrl100")) {
           this.$set(
             this.results.artists[artist],
@@ -92,6 +103,12 @@ export default {
         this.sortResults(response.data.results);
         this.getMoreArtistsInfo();
       }
+      const userResponse = await api.getSearchUser(this.searchTag);
+      if (!userResponse || userResponse.status !== 200) {
+        alert("Error retrieving querry");
+      } else {
+        this.results.people = userResponse.data;
+      }
     }
   },
   data: () => ({
@@ -99,17 +116,16 @@ export default {
     results: { tracks: [], albums: [], artists: [], people: [] }
   }),
   watch: {
-    '$route.params.tag'(newTag, _) {
-      this.searchTag = newTag
-      this.results =  { tracks: [], albums: [], artists: [], people: [] }
-      console.log("la liste des musics", this.results.tracks)
+    "$route.params.tag"(newTag, _) {
+      this.searchTag = newTag;
+      this.results = { tracks: [], albums: [], artists: [], people: [] };
       this.search();
     }
   },
   created() {
     this.setSearchTag();
     this.search();
-  },
+  }
 };
 </script>
 
