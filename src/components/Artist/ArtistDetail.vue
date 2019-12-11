@@ -12,7 +12,7 @@
         id="itunes-button"
         v-bind:href="artistInfo.artistLinkUrl"
         style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/lockup.svg?kind=artist&bubble=apple_music&style=standard-white) no-repeat;width:140px;height:30px;"
-      ></a>
+      />
     </div>
 
     <div>

@@ -7,10 +7,16 @@
 
 <script>
 import Navigation from "@/components/Navigation";
+
 export default {
   name: "app",
   components: {
     "nav-menu": Navigation
+  },
+  created() {
+    if (localStorage.getItem("token") === null) {
+      this.$router.push({ name: "Login" });
+    }
   }
 };
 </script>

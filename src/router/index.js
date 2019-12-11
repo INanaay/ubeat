@@ -16,32 +16,50 @@ export default new Router({
     {
       path: "/",
       name: "Home",
-      component: Home
+      component: Home,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/artist",
       name: "Artist",
-      component: Artist
+      component: Artist,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/artist/:id",
       name: "ArtistDetails",
-      component: ArtistDetail
+      component: ArtistDetail,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/albumOverview",
       name: "AlbumOverview",
-      component: AlbumOverview
+      component: AlbumOverview,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/album/:id",
       name: "Album",
-      component: Album
+      component: Album,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/playlist",
       name: "Playlist",
-      component: Playlist
+      component: Playlist,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/login",
