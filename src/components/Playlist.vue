@@ -66,6 +66,7 @@
 <script>
 import MusicList from "@/components/MusicList.vue";
 import db from "@/script/db";
+import api from "@/script/api"
 
 export default {
   name: "Playlist",
@@ -75,21 +76,36 @@ export default {
   data() {
     return {
       fakeDB: db.getFakeDB(),
-      playlists: db.getPlaylists(),
+      playlists: [],
       songToAdd: {},
       musicListMode: false,
       currentPlaylist: ""
     };
   },
+  created() {
+    this.getPlaylists();
+  },
   methods: {
+    getPlaylists: function() {
+      api.getUserPlaylists(api.userId)
+        .then(result => {
+          this.playlists = result;
+        })
+        .catch(err => {
+          alert(err);
+        });
+    },
     addPlaylist: function() {
       this.$prompt("Playlist name", "", "Create playlist", "question")
         .then(result => {
           if (result.length > 10)
             this.$alert("Maxium playlist name length is 10", "Error", "error");
           else {
-            db.addPlaylist(result);
-            this.$alert("Successfully added playlist", result, "success");
+            api.postPlaylist(result)
+            .then(() => {
+              this.getPlaylists();
+              this.$alert("Successfully added playlist", result, "success");
+            });
           }
         })
         .catch(() => {});
@@ -101,12 +117,15 @@ export default {
           if (result.length > 10)
             this.$alert("Maxium playlist name length is 10", "Error", "error");
           else {
-            playlist.rename(result);
-            this.$alert(
-              'Successfully renamed "' + oldName + '" to "' + result + '"',
-              "Renamed",
-              "success"
-            );
+            api.putPlaylist(playlist.id, result)
+              .then(() => {
+                this.getPlaylists();
+                this.$alert(
+                  'Successfully renamed "' + oldName + '" to "' + result + '"',
+                  "Renamed",
+                  "success"
+                );
+              });
           }
         })
         .catch(() => {});
@@ -136,12 +155,15 @@ export default {
       )
         .then(result => {
           if (result) {
-            db.removePlaylistBy(playlist.id);
-            this.$alert(
-              'Successfully deleted "' + playlist.name + '"',
-              "Deleted",
-              "success"
-            );
+            api.deletePlaylist(playlist.id)
+              .then(() => {
+                this.getPlaylists();
+                this.$alert(
+                  'Successfully deleted "' + playlist.name + '"',
+                  "Deleted",
+                  "success"
+                );
+              });
           }
         })
         .catch(() => {});
