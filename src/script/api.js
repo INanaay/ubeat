@@ -6,7 +6,7 @@ const lastFmKey = "6367fd015b143157df97f99f9bcb003d";
 const lastfm = new LastFM(lastFmKey);
 const apiUrl = "http://ubeat.herokuapp.com/unsecure/";
 const realApiUrl = "http://ubeat.herokuapp.com/";
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZGYxMmJhYTQ2MDJmZjAwMDQzZDMyOTciLCJleHAiOjE1NzYyNTk3NDA2Mjl9.gG3kBlPhTpvTIMUTKOcad0_QPGqfHbI5xhfNoz3RQPQ";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZGYxMmJhYTQ2MDJmZjAwMDQzZDMyOTciLCJleHAiOjE1NzYyNjM1OTU5MzV9.YpHTO92IZJx3UJu-4tBNDGiaPUyYAg-ha4jM2L8efkU";
 const userId = "5df12baa4602ff00043d3297";
 
 var Color = ["#2980b9", "#e74c3c", "#2ecc71", "#f39c12"];
@@ -95,11 +95,18 @@ export default {
         Authorization: token
       }
     }).then(response => {
+
       for (var i = 0; i < response.data.length; i++) {
         response.data[i].active = false;
         response.data[i].color = Color[parseInt(response.data[i].id.substr(-1), 10) % 4];
         response.data[i].size = response.data[i].tracks.length;
+        if (!response.data[i].color)
+          response.data[i].color = Color[1]
+        response.data[i].getTracks = function () {
+          return this.tracks;
+        }
       }
+
       return response.data
     }).catch(error => {
       return error;
@@ -147,13 +154,15 @@ export default {
       return error;
     })
   },
+
   postPlaylistTrack(id, track) {
     const url = realApiUrl + "playlists/" + id + "/tracks";
-    return axios.post(url,
-      track
-    , {
-        'Content-Type': 'application/json',
-        Authorization: token,
+    return axios.post(url, track,
+        {
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json"
+          }
       }).then(response => {
       return response.data
     }).catch(error => {
@@ -163,7 +172,9 @@ export default {
   deletePlaylistTrack(id, trackId) {
     const url = realApiUrl + "playlists/" + id + "/tracks/" + trackId;
     return axios.delete(url, {
-      Authorization: token
+      headers: {
+        Authorization: token
+      }
     }).then(response => {
       return response.data
     }).catch(error => {

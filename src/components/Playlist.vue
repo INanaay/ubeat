@@ -56,8 +56,9 @@
         <h1>{{ currentPlaylist.name }} playlist</h1>
       </div>
       <MusicList
-        v-bind:infos="currentPlaylist.formatMusicList()"
+        v-bind:infos="currentPlaylist.getTracks()"
         v-bind:playlist="currentPlaylist"
+        @refreshHigh="refresh"
       />
     </div>
   </div>
@@ -86,13 +87,22 @@ export default {
     this.getPlaylists();
   },
   methods: {
+    refresh: function() {
+      this.getPlaylists();
+    },
     getPlaylists: function() {
       api.getUserPlaylists(api.userId)
         .then(result => {
           this.playlists = result;
+          if (this.currentPlaylist && this.currentPlaylist.id) {
+            for (var i = 0; i < this.playlists.length; i++) {
+               if (this.playlists[i].id === this.currentPlaylist.id)
+                 this.currentPlaylist = this.playlists[i]
+            }
+          }
         })
-        .catch(err => {
-          alert(err);
+        .catch(() => {
+          alert("Error getting playlist");
         });
     },
     addPlaylist: function() {
@@ -105,6 +115,9 @@ export default {
             .then(() => {
               this.getPlaylists();
               this.$alert("Successfully added playlist", result, "success");
+            })
+            .catch(() => {
+              alert("Error adding playlist")
             });
           }
         })
@@ -125,7 +138,10 @@ export default {
                   "Renamed",
                   "success"
                 );
-              });
+              })
+              .catch(() => {
+                alert("Error editing playlist")
+              });;
           }
         })
         .catch(() => {});
@@ -141,11 +157,18 @@ export default {
         "question"
       ).then(result => {
         if (result) {
-          playlist.addMusic(song);
-          playlist.active = false;
-          this.$alert("Successfully added new song", playlist.name, "success");
+          api.postPlaylistTrack(playlist.id, song)
+            .then(() => {
+              this.getPlaylists();
+              this.$alert("Successfully added new song", playlist.name, "success");
+              playlist.active = false;
+            })
+            .catch(() => {
+            alert("Error adding song")
+          });
         }
-      });
+      })
+        .catch(() => {});
     },
     deletePlaylist: function(playlist) {
       this.$confirm(
@@ -163,7 +186,10 @@ export default {
                   "Deleted",
                   "success"
                 );
-              });
+              })
+              .catch(() => {
+              alert("Error deleting playlist")
+            });;
           }
         })
         .catch(() => {});
