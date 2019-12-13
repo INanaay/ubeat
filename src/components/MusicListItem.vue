@@ -88,17 +88,19 @@ export default {
     addMusicToPlaylist(music, playlist) {
       api.postPlaylistTrack(playlist.id, music)
         .then(() => {
-          this.$parent.$parent.getPlaylists();
+          if (this.isInPlaylist) {
+            this.$parent.$parent.getPlaylists();
+            this.$emit('refresh')
+          }
           this.$alert("Successfully added new song", playlist.name, "success");
           this.isActive = !this.isActive;
-          this.$emit('refresh')
+
         })
         .catch(() => {
           alert("Error adding song")
         });
     },
     deleteSong(index) {
-      console.log(this.$props.playlist.tracks[index], index)
       api.deletePlaylistTrack(this.$props.playlist.id, this.$props.playlist.tracks[index].trackId)
         .then(() => {
           this.$parent.$parent.getPlaylists();

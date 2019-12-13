@@ -14,7 +14,7 @@
         <router-link to="/artist">Artist</router-link>
       </li>
       <li id="nav-user-settings" class="navbar navleft">
-        <router-link to="">User Settings</router-link>
+        <router-link v-bind:to="{path: '/user/' + userId, params: {isMe: true}}">User</router-link>
       </li>
       <li id="nav-playlist" class="navbar navleft">
         <router-link to="/playlist">Playlist</router-link>
@@ -26,7 +26,7 @@
         </button>
       </li>
       <li id="nav-user" class="navbar navright">
-        Roger Martin
+        {{userName}}
       </li>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
@@ -38,9 +38,12 @@
 </template>
 
 <script>
-module.exports = {
+  import api from "@/script/api"
+export default {
   data: function() {
     return {
+      userName: "Jacques",
+      userId: api.userId,
       showNavbar: window.innerWidth >= 992
     };
   }

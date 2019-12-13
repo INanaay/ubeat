@@ -6,8 +6,8 @@ const lastFmKey = "6367fd015b143157df97f99f9bcb003d";
 const lastfm = new LastFM(lastFmKey);
 const apiUrl = "http://ubeat.herokuapp.com/unsecure/";
 const realApiUrl = "http://ubeat.herokuapp.com/";
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZGYxMmJhYTQ2MDJmZjAwMDQzZDMyOTciLCJleHAiOjE1NzYyNjM1OTU5MzV9.YpHTO92IZJx3UJu-4tBNDGiaPUyYAg-ha4jM2L8efkU";
-const userId = "5df12baa4602ff00043d3297";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZGYzMTA0MjcxYjk2YjAwMDQ5NjVhYzgiLCJleHAiOjE1NzYzMDA1OTM2NDV9.22dtd6NuTsyiztmCfIgmZLr224JKJ_4czNqjLtU3_uI";
+const userId = "5df3104271b96b0004965ac8";
 
 var Color = ["#2980b9", "#e74c3c", "#2ecc71", "#f39c12"];
 
@@ -49,7 +49,7 @@ export default {
       return response.data.results[0];
     });
   },
-  getUser(id) {
+  getUserData(id) {
     const url = realApiUrl + "users/" + id;
     return axios.get(url, {
       headers: {
@@ -81,6 +81,8 @@ export default {
     return axios.delete(url, {
       headers: {
         Authorization: token
+      }, data: {
+        id: id
       }
     }).then(response => {
       return response.data
