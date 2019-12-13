@@ -7,12 +7,13 @@
         <button class="followButton" v-if="!isFollowing" v-on:click="follow()">Follow</button>
         <button class="followButton" v-if="isFollowing" v-on:click="unfollow()">Unfollow</button>
       </div>
-      <div class="gravatarImg"><img v-bind:src="gravatarUrl"/></div>
+      <div class="gravatarImg"><img v-bind:src="getGravatarHash(userData.email, true)"/></div>
       <div id="name">Name : <span id="nameValue">{{userData.name}}</span></div>
       <div id="email">Email : <span id="emailValue">{{userData.email}}</span></div>
       <h2 class="title">Follows</h2>
       <div v-bind:key="user.id" v-for="user in userData.following" class="followBlock">
-        <div v-on:click="goToUser(user.id)" class="followCard">
+          <div v-on:click="goToUser(user.id)" class="followCard">
+         <div class="gravatarFollow"><img v-bind:src="getGravatarHash(user.email)"/></div>
           <div class="followName">{{user.name}}</div>
           <div class="followEmail">{{user.email}}</div>
         </div>
@@ -35,6 +36,7 @@
       </div>
     </div>
     <div v-if="isActive">
+      <h2 class="playlistTitle">"{{currentPlaylist.name}}" playlist of user {{userData.name}}</h2>
       <MusicList v-bind:infos="currentPlaylist.getTracks()" />
     </div>
   </div>
@@ -42,6 +44,9 @@
 
 
 <style scoped>
+  .playlistTitle {
+    text-align: center;
+  }
 
   .gravatarImg {
     position: absolute;
@@ -50,8 +55,17 @@
     border: 2px solid white;
     border-radius: 200px;
     overflow: hidden;
-
   }
+
+  .gravatarFollow {
+    position: relative;
+    opacity: 0.8;
+    overflow: hidden;
+    border: 2px solid white;
+    border-radius: 200px;
+    margin-bottom: 0.2vw;
+  }
+
   .backButton {
     font-size: 17px;
     padding: 10px;
@@ -104,15 +118,13 @@
 
   .followCard {
     text-align: center;
-    border: 2px solid grey;
-    padding: 20px;
-    width: 11vw;
-    height: 11vw;
-    background-color: #2980b9;
+    padding: 15px;
+    width: 12vw;
+    height: 12vw;
     color: white;
-    border-radius: 200px;
     word-wrap: break-word;
     cursor: pointer;
+    margin-bottom: 30px;
   }
 
   .followBlock {
@@ -122,12 +134,11 @@
 
   .followEmail {
     color: lightgrey;
-    font-size: 0.8vw;
+    font-size: 0.85vw;
   }
 
   .followName {
     font-size: 1.8vw;
-    margin-top: 4vw;
   }
 
   .playlistBlock {
@@ -185,7 +196,6 @@
           isFollowing: false,
           currentPlaylist: {},
           isActive: false,
-          gravatarUrl: ""
         }
       },
       methods: {
@@ -274,8 +284,11 @@
           this.$router.push('/user/' + api.userId);
           this.refresh();
         },
-        getGravatarHash: function (email) {
-          this.gravatarUrl = "https://www.gravatar.com/avatar/" + api.getGravatarImage(email) + "?s=350&d=robohash";
+        getGravatarHash: function (email, max) {
+          if (max)
+            return "https://www.gravatar.com/avatar/" + api.getGravatarImage(email) + "?s=350&d=robohash";
+          else
+            return "https://www.gravatar.com/avatar/" + api.getGravatarImage(email) + "?s=240&d=robohash";
         }
       },
       mounted() {
