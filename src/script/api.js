@@ -1,13 +1,14 @@
 import axios from "axios";
 
 const LastFM = require("last-fm");
+const md5 = require("js-md5");
 
 const lastFmKey = "6367fd015b143157df97f99f9bcb003d";
 const lastfm = new LastFM(lastFmKey);
 const apiUrl = "http://ubeat.herokuapp.com/unsecure/";
 const realApiUrl = "http://ubeat.herokuapp.com/";
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZGYzMTA0MjcxYjk2YjAwMDQ5NjVhYzgiLCJleHAiOjE1NzYzMDA1OTM2NDV9.22dtd6NuTsyiztmCfIgmZLr224JKJ_4czNqjLtU3_uI";
-const userId = "5df3104271b96b0004965ac8";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZGYzNjFiOTcxYjk2YjAwMDQ5NjViZTciLCJleHAiOjE1NzYzMTc4Nzg2MDR9.gmZDwNn4PNHKMKVVMecazWSffRJ_-TIoCrnihn1MeCQ";
+const userId = "5df361b971b96b0004965be7";
 
 var Color = ["#2980b9", "#e74c3c", "#2ecc71", "#f39c12"];
 
@@ -100,7 +101,7 @@ export default {
 
       for (var i = 0; i < response.data.length; i++) {
         response.data[i].active = false;
-        response.data[i].color = Color[parseInt(response.data[i].id.substr(-1), 10) % 4];
+        response.data[i].color = Color[response.data[i].id.charCodeAt(response.data[i].id.length - 1) % 4];
         response.data[i].size = response.data[i].tracks.length;
         if (!response.data[i].color)
           response.data[i].color = Color[1]
@@ -129,11 +130,10 @@ export default {
       return error;
     })
   },
-  putPlaylist(id, name) {
-    const url = realApiUrl + "playlists/" + id;
-    return axios.put(url, {
-      name: name
-    }, {
+  putPlaylist(playlist, name) {
+    playlist.name = name;
+    const url = realApiUrl + "playlists/" + playlist.id;
+    return axios.put(url, playlist, {
       headers: {
         Authorization: token,
         "Content-Type": "application/json"
@@ -185,4 +185,10 @@ export default {
   },
   userId: userId,
   lastfm : lastfm,
+  getGravatarImage(email) {
+    if (email) {
+      return md5(email.toLowerCase());
+    }
+    return "";
+  }
 };

@@ -130,7 +130,7 @@ export default {
           if (result.length > 10)
             this.$alert("Maxium playlist name length is 10", "Error", "error");
           else {
-            api.putPlaylist(playlist.id, result)
+            api.putPlaylist(playlist, result)
               .then(() => {
                 this.getPlaylists();
                 this.$alert(

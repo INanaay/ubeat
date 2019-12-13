@@ -7,6 +7,7 @@
         <button class="followButton" v-if="!isFollowing" v-on:click="follow()">Follow</button>
         <button class="followButton" v-if="isFollowing" v-on:click="unfollow()">Unfollow</button>
       </div>
+      <div class="gravatarImg"><img v-bind:src="gravatarUrl"/></div>
       <div id="name">Name : <span id="nameValue">{{userData.name}}</span></div>
       <div id="email">Email : <span id="emailValue">{{userData.email}}</span></div>
       <h2 class="title">Follows</h2>
@@ -41,6 +42,16 @@
 
 
 <style scoped>
+
+  .gravatarImg {
+    position: absolute;
+    margin-left: 78vw;
+    margin-top: -3vw;
+    border: 2px solid white;
+    border-radius: 200px;
+    overflow: hidden;
+
+  }
   .backButton {
     font-size: 17px;
     padding: 10px;
@@ -58,26 +69,32 @@
 
   #name, #email {
     color: lightgrey;
-    margin-left: 30vw;
+    margin-left: 25vw;
     margin-bottom: 2vw;
-    font-size: 25px
+    font-size: 1.5vw
   }
 
   #emailValue, #nameValue {
     color: #f39c12;
-    font-size: 25px;
-    margin-left: 10vw;
+    font-size: 2vw;
+    margin-left: 6vw;
+  }
+
+  img {
+    max-width:100%;
+    height:auto;
   }
 
   .followButton {
-
     color: white;
     padding: 15px;
     background-color: #2980b9;
     border-color: #2980b9;
     border-radius: 10px;
-    margin-left: 80vw;
-    font-size: 25px;
+    margin-left: 62vw;
+    margin-top: 1vw;
+    font-size: 2vw;
+    position: absolute;
   }
 
   .title {
@@ -89,8 +106,8 @@
     text-align: center;
     border: 2px solid grey;
     padding: 20px;
-    width: 10vw;
-    height: 10vw;
+    width: 11vw;
+    height: 11vw;
     background-color: #2980b9;
     color: white;
     border-radius: 200px;
@@ -105,12 +122,12 @@
 
   .followEmail {
     color: lightgrey;
-    font-size: 1vw;
+    font-size: 0.8vw;
   }
 
   .followName {
-    font-size: 2vw;
-    margin-top: 3vw;
+    font-size: 1.8vw;
+    margin-top: 4vw;
   }
 
   .playlistBlock {
@@ -122,7 +139,7 @@
   .playlistCard {
     text-align: center;
     border: 2px solid grey;
-    padding: 20px;
+    padding: 22px;
     width: 10vw;
     height: 8vw;
     color: white;
@@ -168,6 +185,7 @@
           isFollowing: false,
           currentPlaylist: {},
           isActive: false,
+          gravatarUrl: ""
         }
       },
       methods: {
@@ -193,6 +211,7 @@
             .then(result => {
               this.userData = result;
               this.getConnectUserData();
+              this.getGravatarHash(result.email);
             })
             .catch(() => {
               alert("Error getting user data");
@@ -254,12 +273,16 @@
         goBack: function () {
           this.$router.push('/user/' + api.userId);
           this.refresh();
+        },
+        getGravatarHash: function (email) {
+          this.gravatarUrl = "https://www.gravatar.com/avatar/" + api.getGravatarImage(email) + "?s=350&d=robohash";
         }
       },
       mounted() {
           this.isMe = this.id === api.userId;
           this.getUserPlaylist();
           this.getUserData();
+          this.getGravatarHash()
       }
     }
 </script>
