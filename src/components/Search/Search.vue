@@ -4,7 +4,7 @@
 
     <div v-if="results.artists.length !== 0">
       <h1>Artists</h1>
-      <div id="artist-container">
+      <div class="container">
         <artist-preview
           v-bind:key="'item' + i"
           v-for="(item, i) in results.artists"
@@ -15,7 +15,7 @@
 
     <div v-if="results.albums.length !== 0">
       <h1>Albums</h1>
-      <div id="albums-container">
+      <div class="container">
         <album-preview
           v-bind:key="'item' + i"
           v-for="(item, i) in results.albums"
@@ -26,7 +26,7 @@
 
     <div v-if="results.tracks.length !== 0">
       <h1>Musics</h1>
-      <div id="music-container">
+      <div class="container">
         <SearchMusicItem
           v-bind:key="'item' + i"
           v-for="(item, i) in results.tracks"
@@ -37,7 +37,7 @@
 
     <div v-if="results.tracks.length !== 0">
       <h1>User</h1>
-      <div id="people-container">
+      <div class="container">
         <SearchUserItem
           v-bind:key="'item' + i"
           v-for="(item, i) in results.people"
@@ -52,8 +52,8 @@
 import api from "@/script/api";
 import ArtistPreview from "../Artist/ArtistPreview";
 import AlbumPreview from "../Album/AlbumPreview";
-import SearchMusicItem from "../SearchMusicItem";
-import SearchUserItem from "../SearchUserItem";
+import SearchMusicItem from "./SearchMusicItem";
+import SearchUserItem from "./SearchUserItem";
 
 export default {
   name: "Search",
@@ -132,4 +132,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+</style>

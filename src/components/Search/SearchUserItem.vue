@@ -1,6 +1,6 @@
 <template>
   <div class="user-preview">
-    <img src="../assets/avatar2.png" alt="" />
+    <img src="../../assets/avatar2.png" alt="" />
     <span>
       {{ peopleData.name }}
       <br />
