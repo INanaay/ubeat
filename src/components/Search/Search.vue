@@ -63,6 +63,7 @@ export default {
       this.searchTag = this.$route.params.tag;
     },
     sortResults(data) {
+      // eslint-disable-next-line no-unused-vars
       for (const result of data) {
         const type = result.wrapperType;
         switch (type) {
@@ -82,6 +83,7 @@ export default {
     },
 
     async getMoreArtistsInfo() {
+      // eslint-disable-next-line no-unused-vars
       for (const artist in this.results.artists) {
         const response = await api.getArtistinfo(
           this.results.artists[artist].artistName
@@ -116,6 +118,7 @@ export default {
     results: { tracks: [], albums: [], artists: [], people: [] }
   }),
   watch: {
+    // eslint-disable-next-line no-unused-vars
     "$route.params.tag"(newTag, _) {
       this.searchTag = newTag;
       this.results = { tracks: [], albums: [], artists: [], people: [] };

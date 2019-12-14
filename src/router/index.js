@@ -7,6 +7,8 @@ import Artist from "@/components/Artist/ArtistHome";
 import ArtistDetail from "../components/Artist/ArtistDetail";
 import Playlist from "@/components/Playlist";
 import Search from "../components/Search/Search";
+import Login from "@/components/Login";
+import Register from "../components/Register";
 
 Vue.use(Router);
 
@@ -15,37 +17,68 @@ export default new Router({
     {
       path: "/",
       name: "Home",
-      component: Home
+      component: Home,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/artist",
       name: "Artist",
-      component: Artist
+      component: Artist,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/artist/:id",
       name: "ArtistDetails",
-      component: ArtistDetail
+      component: ArtistDetail,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/albumOverview",
       name: "AlbumOverview",
-      component: AlbumOverview
+      component: AlbumOverview,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/album/:id",
       name: "Album",
-      component: Album
+      component: Album,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/playlist",
       name: "Playlist",
-      component: Playlist
+      component: Playlist,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/search/:tag",
       name: "Search",
-      component: Search
+      component: Search,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login,
+    },
+    {
+      path: "/register",
+      name: "Register",
+      component: Register
     }
   ]
 });

@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    <nav-menu></nav-menu>
-    <router-view></router-view>
+    <nav-menu />
+    <router-view> </router-view>
   </div>
 </template>
 
 <script>
 import Navigation from "@/components/Navigation";
+import Cookies from "js-cookie";
+
 export default {
   name: "app",
   components: {
     "nav-menu": Navigation
+  },
+  created() {
+    if (Cookies.get("token") === null) {
+      this.$router.push({ name: "Login" });
+    }
   }
 };
 </script>

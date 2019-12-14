@@ -1,6 +1,9 @@
 <template>
-  <router-link class="music-preview" v-bind:to="'/album/' + musicData.collectionId">
-    <img v-bind:src="musicData.artworkUrl100" />
+  <router-link
+    class="music-preview"
+    v-bind:to="'/album/' + musicData.collectionId"
+  >
+    <img v-bind:src="musicData.artworkUrl100" alt="" />
     <span>
       {{ musicData.trackName }}
       <br />

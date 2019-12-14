@@ -1,7 +1,7 @@
 <template id="app">
   <nav v-bind:class="{ hiddenNavbar: !showNavbar }">
     <ul v-show="showNavbar">
-      <li id="nav-search-bar" class="navbar navleft">
+      <li v-if="loggedIn" id="nav-search-bar" class="navbar navleft">
         <input
           type="search"
           placeholder="Search album or artist"
@@ -17,20 +17,20 @@
       <li id="nav-artist" class="navbar navleft">
         <router-link to="/artist">Artist</router-link>
       </li>
-      <li id="nav-user-settings" class="navbar navleft">
-        <router-link to="">User Settings</router-link>
-      </li>
       <li id="nav-playlist" class="navbar navleft">
         <router-link to="/playlist">Playlist</router-link>
       </li>
-      <li id="nav-disconnect" class="navbar navright">
-        <router-link to="">Disconnect</router-link>
-        <button v-on:click="showNavbar = false" id="nav-hide-btn">
-          <span class="mdi mdi-window-close"></span>
-        </button>
+      <li v-if="loggedIn" id="nav-disconnect" class="navbar navright">
+        <span v-on:click="DisconnectUser" to="">Logout</span>
       </li>
-      <li id="nav-user" class="navbar navright">
-        Roger Martin
+      <li v-if="!loggedIn" id="nav-disconnect" class="navbar navright">
+        <router-link to="/login">Login</router-link>
+      </li>
+      <li id="nav-user" class="navbar navright" v-show="storeState.username">
+        {{ storeState.username }}
+      </li>
+      <li id="nav-user-settings" class="navbar navright">
+        <router-link to="">User Settings</router-link>
       </li>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
@@ -42,16 +42,33 @@
 </template>
 
 <script>
-module.exports = {
-  methods: {
-    submit(event) {
-        this.$router.push({ name: 'Search', params: { tag: event.srcElement.value } })
+import { store } from "../script/user";
+export default {
+  data: () => ({
+    storeState: store.state
+  }),
+  computed: {
+    loggedIn() {
+      return store.loggedIn();
     }
   },
-  data: function() {
-    return {
-      showNavbar: window.innerWidth >= 992
-    };
+  methods: {
+    DisconnectUser: function() {
+      store.DiscoUser();
+      this.$router.push({ name: "Login" });
+      location.reload();
+    },
+    showNavbar: function() {
+      return {
+        showNavbar: window.innerWidth >= 992
+      };
+    },
+    submit(event) {
+      this.$router.push({
+        name: "Search",
+        params: { tag: event.srcElement.value }
+      });
+    }
   }
 };
 </script>
@@ -65,6 +82,12 @@ module.exports = {
 
 .mdi-chevron-double-up {
   font-size: 20px;
+}
+
+#nav-disconnect span {
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
 }
 
 #nav-show-bar {
@@ -110,9 +133,9 @@ ul {
   display: inline;
 }
 nav {
-  margin: 10px;
   background-color: #222326;
-  border: 2px solid black;
+  overflow: hidden;
+  width: 100%;
 }
 
 #nav-user {

@@ -91,6 +91,7 @@ export default {
 <style>
 #header {
   text-align: center;
+  margin-top: 10px;
   font-size: 45px;
 }
 
