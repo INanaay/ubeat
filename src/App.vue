@@ -7,7 +7,8 @@
 
 <script>
 import Navigation from "@/components/Navigation";
-import Cookies from "js-cookie";
+//import Cookies from "js-cookie";
+import { store } from "./script/user";
 
 export default {
   name: "app",
@@ -15,7 +16,8 @@ export default {
     "nav-menu": Navigation
   },
   created() {
-    if (Cookies.get("token") === null) {
+    let loggedIn = store.loggedIn();
+    if (!loggedIn) {
       this.$router.push({ name: "Login" });
     }
   }
