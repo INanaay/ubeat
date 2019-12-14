@@ -65,8 +65,12 @@ export default {
       document.getElementById("email").value = "";
       // eslint-disable-next-line no-unused-vars
       store.loginUser(this.email, this.passw).then(response => {
-        this.$router.push({ name: "Home" });
-      });
+          this.$router.push({ name: "Home" });
+        })
+        // eslint-disable-next-line no-unused-vars
+        .catch(error => {
+          alert("Sorry something wrong happend !");
+        });
     },
     validateForm: function(e) {
       if (e.keyCode === 13) {

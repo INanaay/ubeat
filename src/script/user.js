@@ -1,12 +1,13 @@
 import axios from "axios";
 import qs from "querystring";
+import Cookies from "js-cookie";
 
 const apiUrl = "http://localhost:3000/";
 
 export const store = {
   state: {
-    username: localStorage.getItem("name") || null,
-    token: localStorage.getItem("token") || null
+    username: Cookies.get("name") || null,
+    token: Cookies.get("token") || null
   },
   loggedIn() {
     return this.state.token !== null;
@@ -24,8 +25,8 @@ export const store = {
     }).then(response => {
       this.state.username = response.data.name;
       this.state.token = response.data.token;
-      localStorage.setItem("name", this.state.username);
-      localStorage.setItem("token", this.state.token);
+      Cookies.set("name", this.state.username);
+      Cookies.set("token", this.state.token);
     });
   },
   createUser(username, emailaddress, passw) {
@@ -44,7 +45,7 @@ export const store = {
     });
   },
   DiscoUser() {
-    localStorage.removeItem("name");
-    localStorage.removeItem("token");
+    Cookies.remove("name");
+    Cookies.remove("token");
   }
 };

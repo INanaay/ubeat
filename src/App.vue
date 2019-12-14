@@ -7,6 +7,7 @@
 
 <script>
 import Navigation from "@/components/Navigation";
+import Cookies from "js-cookie";
 
 export default {
   name: "app",
@@ -14,7 +15,7 @@ export default {
     "nav-menu": Navigation
   },
   created() {
-    if (localStorage.getItem("token") === null) {
+    if (Cookies.get("token") === null) {
       this.$router.push({ name: "Login" });
     }
   }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 const LastFM = require("last-fm");
 
 const lastFmKey = "6367fd015b143157df97f99f9bcb003d";
@@ -12,7 +13,7 @@ export default {
       "search?limit=1&q=" +
       artist_name +
       "&access_token=" +
-      localStorage.getItem("token");
+      Cookies.get("token");
     return axios.get(encodeURI(url)).then(response => {
       return response.data.results;
     });
@@ -24,7 +25,7 @@ export default {
       "search/albums?limit=1&q=" +
       album_name +
       "&access_token=" +
-      localStorage.getItem("token");
+      Cookies.get("token");
     return axios.get(encodeURI(url)).then(response => {
       return response.data.results;
     });
@@ -35,7 +36,7 @@ export default {
       "artists/" +
       id +
       "?access_token=" +
-      localStorage.getItem("token");
+      Cookies.get("token");
     return axios.get(encodeURI(url)).then(response => {
       return response.data.results;
     });
@@ -47,7 +48,7 @@ export default {
       id +
       "/albums" +
       "?access_token=" +
-      localStorage.getItem("token");
+      Cookies.get("token");
     return axios.get(encodeURI(url)).then(response => {
       return response.data.results;
     });
@@ -59,7 +60,7 @@ export default {
       id +
       "/tracks" +
       "?access_token=" +
-      localStorage.getItem("token");
+      Cookies.get("token");
     return axios.get(encodeURI(url)).then(response => {
       return response.data.results;
     });
