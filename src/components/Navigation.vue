@@ -1,7 +1,7 @@
 <template id="app">
   <nav v-bind:class="{ hiddenNavbar: !showNavbar }">
     <ul v-show="showNavbar">
-      <li id="nav-search-bar" class="navbar navleft">
+      <li v-if="loggedIn" id="nav-search-bar" class="navbar navleft">
         <input type="search" placeholder="Search album or artist" />
       </li>
       <li id="nav-home" class="navbar navleft">
