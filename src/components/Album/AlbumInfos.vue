@@ -13,7 +13,7 @@
         {{ albumInfos.artistName }}
       </p>
       <p class="album_infos_text">
-        {{ albumInfos.releaseDate.split("-")[0] }},
+        {{ albumInfos.releaseDate }},
         {{ albumInfos.primaryGenreName }}
       </p>
       <p class="album_infos_text">
