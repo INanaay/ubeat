@@ -6,8 +6,8 @@ const md5 = require("js-md5");
 const lastFmKey = "6367fd015b143157df97f99f9bcb003d";
 const lastfm = new LastFM(lastFmKey);
 const apiUrl = "http://ubeat.herokuapp.com/";
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZGYzNjFiOTcxYjk2YjAwMDQ5NjViZTciLCJleHAiOjE1NzYzMTc4Nzg2MDR9.gmZDwNn4PNHKMKVVMecazWSffRJ_-TIoCrnihn1MeCQ";
 const userId = "5df361b971b96b0004965be7";
+var Color = ["#2980b9", "#e74c3c", "#2ecc71", "#f39c12"];
 
 export default {
   getArtistinfo(artist_name) {
@@ -97,12 +97,11 @@ export default {
         return response;
       });
   },
-  lastfm: lastfm
   getUserData(id) {
-    const url = realApiUrl + "users/" + id;
+    const url = apiUrl + "users/" + id;
     return axios.get(url, {
       headers: {
-        'Authorization': token
+        'Authorization': Cookies.get("token")
       }
     }).then(response => {
       return response.data
@@ -111,12 +110,12 @@ export default {
     })
   },
   postFollow(id) {
-    const url = realApiUrl + "follow";
+    const url = apiUrl + "follow";
     return axios.post(url, {
       id: id
     }, {
       headers: {
-        Authorization: token,
+        Authorization: Cookies.get("token"),
         "Content-Type": "application/json"
       },
     }).then(response => {
@@ -126,10 +125,10 @@ export default {
     })
   },
   deleteFollow(id) {
-    const url = realApiUrl + "follow/" + id;
+    const url = apiUrl + "follow/" + id;
     return axios.delete(url, {
       headers: {
-        Authorization: token
+        Authorization: Cookies.get("token")
       }, data: {
         id: id
       }
@@ -140,10 +139,10 @@ export default {
     })
   },
   getUserPlaylists(id) {
-    const url = realApiUrl + "users/" + id + "/playlists";
+    const url = apiUrl + "users/" + id + "/playlists";
     return axios.get(url, {
       headers: {
-        Authorization: token
+        Authorization: Cookies.get("token")
       }
     }).then(response => {
 
@@ -164,13 +163,13 @@ export default {
     })
   },
   postPlaylist(name) {
-    const url = realApiUrl + "playlists";
+    const url = apiUrl + "playlists";
     return axios.post(url, {
       name: name
     }, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: token
+        Authorization: Cookies.get("token")
       }
     }).then(response => {
       return response.data
@@ -180,10 +179,10 @@ export default {
   },
   putPlaylist(playlist, name) {
     playlist.name = name;
-    const url = realApiUrl + "playlists/" + playlist.id;
+    const url = apiUrl + "playlists/" + playlist.id;
     return axios.put(url, playlist, {
       headers: {
-        Authorization: token,
+        Authorization: Cookies.get("token"),
         "Content-Type": "application/json"
       }
     }).then(response => {
@@ -193,10 +192,10 @@ export default {
     })
   },
   deletePlaylist(id) {
-    const url = realApiUrl + "playlists/" + id;
+    const url = apiUrl + "playlists/" + id;
     return axios.delete(url, {
       headers: {
-        Authorization: token
+        Authorization: Cookies.get("token")
       }
     }).then(response => {
       return response.data
@@ -206,11 +205,11 @@ export default {
   },
 
   postPlaylistTrack(id, track) {
-    const url = realApiUrl + "playlists/" + id + "/tracks";
+    const url = apiUrl + "playlists/" + id + "/tracks";
     return axios.post(url, track,
         {
           headers: {
-            Authorization: token,
+            Authorization: Cookies.get("token"),
             "Content-Type": "application/json"
           }
       }).then(response => {
@@ -220,10 +219,10 @@ export default {
     })
   },
   deletePlaylistTrack(id, trackId) {
-    const url = realApiUrl + "playlists/" + id + "/tracks/" + trackId;
+    const url = apiUrl + "playlists/" + id + "/tracks/" + trackId;
     return axios.delete(url, {
       headers: {
-        Authorization: token
+        Authorization: Cookies.get("token")
       }
     }).then(response => {
       return response.data
