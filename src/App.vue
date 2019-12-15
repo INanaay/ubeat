@@ -18,7 +18,8 @@ export default {
   created() {
     let loggedIn = store.loggedIn();
     if (!loggedIn) {
-      this.$router.push({ name: "Login" });
+      this.$router.push({ name: "Login" }).catch(() => {
+      });
     }
   }
 };

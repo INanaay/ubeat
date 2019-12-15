@@ -80,7 +80,8 @@ export default {
       document.getElementById("passw").value = "";
       // eslint-disable-next-line no-unused-vars
       store.createUser(this.username, this.email, this.passw).then(response => {
-          this.$router.push({ name: "Login" });
+          this.$router.push({ name: "Login" }).catch(() => {
+          });
         })
         // eslint-disable-next-line no-unused-vars
         .catch(error => {

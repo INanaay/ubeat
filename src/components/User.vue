@@ -231,7 +231,8 @@ export default {
   },
   methods: {
     goToMyPlaylist: function() {
-      this.$router.push("/playlist");
+      this.$router.push("/playlist").catch(() => {
+      });
     },
     openPlaylist: function(playlist) {
       this.currentPlaylist = playlist;
@@ -320,11 +321,13 @@ export default {
       this.getUserData();
     },
     goToUser: function(userId) {
-      this.$router.push("/user/" + userId);
+      this.$router.push("/user/" + userId).catch(() => {
+      });
       this.refresh();
     },
     goBack: function() {
-      this.$router.push("/user/" + api.userId());
+      this.$router.push("/user/" + api.userId()).catch(() => {
+      });
       this.refresh();
     },
     getGravatarHash: function(email, max) {

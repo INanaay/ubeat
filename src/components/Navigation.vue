@@ -60,7 +60,8 @@ export default {
   methods: {
     DisconnectUser: function() {
       store.DiscoUser();
-      this.$router.push({ name: "Login" });
+      this.$router.push({ name: "Login" }).catch(() => {
+      });
       location.reload();
     },
     submit(event) {
@@ -72,6 +73,7 @@ export default {
       this.$router.push({
         name: "Search",
         params: { tag: event.srcElement.value }
+      }).catch(() => {
       });
     }
   }
