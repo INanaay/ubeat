@@ -13,27 +13,12 @@
             class="card"
             v-bind:style="{ 'background-color': playlist.color }"
           >
-            <button v-on:click="changeSelectState(playlist)" class="cardButton">
-              <span
-                v-bind:class="{ blue: playlist.active }"
-                class="mdi mdi-plus"
-              ></span>
-            </button>
             <button v-on:click="renamePlaylist(playlist)" class="cardButton">
               <span class="mdi mdi-rename-box"></span>
             </button>
             <button v-on:click="deletePlaylist(playlist)" class="cardButton">
               <span class="mdi mdi-trash-can"></span>
             </button>
-            <select v-if="playlist.active" size="10">
-              <option
-                v-for="song in fakeDB"
-                v-bind:key="song.id"
-                v-on:click="addSong(playlist, song)"
-              >
-                {{ song.trackName }} - {{ song.artistName }}
-              </option>
-            </select>
             <div
               v-if="!playlist.active"
               v-on:click="openPlaylist(playlist)"
@@ -66,7 +51,6 @@
 
 <script>
 import MusicList from "@/components/MusicList.vue";
-import db from "@/script/db";
 import api from "@/script/api"
 
 export default {
@@ -76,7 +60,6 @@ export default {
   },
   data() {
     return {
-      fakeDB: db.getFakeDB(),
       playlists: [],
       songToAdd: {},
       musicListMode: false,
@@ -96,8 +79,8 @@ export default {
           this.playlists = result;
           if (this.currentPlaylist && this.currentPlaylist.id) {
             for (var i = 0; i < this.playlists.length; i++) {
-               if (this.playlists[i].id === this.currentPlaylist.id)
-                 this.currentPlaylist = this.playlists[i]
+              if (this.playlists[i].id === this.currentPlaylist.id)
+                this.currentPlaylist = this.playlists[i]
             }
           }
         })
@@ -146,30 +129,6 @@ export default {
         })
         .catch(() => {});
     },
-    addSong: function(playlist, song) {
-      this.$confirm(
-        'Do you want to add "' +
-          song.trackName +
-          '" of "' +
-          song.artistName +
-          '"',
-        playlist.name,
-        "question"
-      ).then(result => {
-        if (result) {
-          api.postPlaylistTrack(playlist.id, song)
-            .then(() => {
-              this.getPlaylists();
-              this.$alert("Successfully added new song", playlist.name, "success");
-              playlist.active = false;
-            })
-            .catch(() => {
-            alert("Error adding song")
-          });
-        }
-      })
-        .catch(() => {});
-    },
     deletePlaylist: function(playlist) {
       this.$confirm(
         'Do you want to delete "' + playlist.name + '"',
@@ -195,7 +154,6 @@ export default {
         .catch(() => {});
     },
     changeSelectState: function(playlist) {
-      this.fakeDB = db.getFakeDB();
       playlist.active = !playlist.active;
     },
     openPlaylist: function(playlist) {
@@ -245,6 +203,7 @@ h1 {
   font-size: 30px;
   padding: 10px;
   margin: 20px;
+  cursor: pointer;
 }
 
 #playlists {
@@ -287,6 +246,7 @@ h1 {
   padding: 4px;
   padding-right: 6px;
   padding-left: 6px;
+  cursor: pointer;
 }
 
 div {
@@ -300,5 +260,6 @@ div {
   border-radius: 20px;
   width: 20vw;
   padding: 15px;
+  cursor: pointer;
 }
 </style>

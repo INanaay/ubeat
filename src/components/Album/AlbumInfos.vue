@@ -51,7 +51,8 @@
 </template>
 
 <script>
-import db from "../../script/db";
+import api from "../../script/api";
+
 export default {
   name: "AlbumInfos",
   props: ["albumInfos", "albumTimeMillis", "infos"],
@@ -61,14 +62,26 @@ export default {
   }),
   methods: {
     addAllMusic: function(playlist) {
-      playlist.addAllMusic(this.$props.infos);
-      this.isActive = !this.isActive;
+      api.putMusicPlaylist(playlist, this.$props.infos)
+        .then(() => {
+          this.$alert("Successfully added song to the play", "Add songs", "success");
+          this.isActive = !this.isActive;
+        })
+        .catch(() => {
+          alert("Error getting playlist");
+        });
     },
     openSelect: function() {
       this.isActive = !this.isActive;
     },
     getPlaylist: function() {
-      this.playlists = db.getPlaylists();
+      api.getUserPlaylists(api.userId())
+        .then(result => {
+          this.playlists = result;
+        })
+        .catch(() => {
+          alert("Error getting playlist");
+        });
     }
   },
   created() {
