@@ -1,23 +1,77 @@
 <template>
-  <router-link
-    class="music-preview"
-    v-bind:to="'/album/' + musicData.collectionId"
-  >
-    <img v-bind:src="musicData.artworkUrl100" alt="" />
+  <div class="music-preview">
+    <router-link class="music-preview" v-bind:to="'/album/' + musicData.collectionId">
+      <img v-bind:src="musicData.artworkUrl100" alt />
+      <span>
+        {{ musicData.trackName }}
+        <br />
+        {{ musicData.artistName }}
+        <br />
+        {{ musicData.collectionName }}
+      </span>
+    </router-link>
+
     <span>
-      {{ musicData.trackName }}
-      <br />
-      {{ musicData.artistName }}
-      <br />
-      {{ musicData.collectionName }}
+      <img
+        src="../../assets/plus.svg"
+        alt
+        style="height: 25px; lenght: 25px; padding: 5px; margin: 3px;"
+        v-on:click="openSelect()"
+      />
+      <select v-if="isActive" size="3" style="position: center">
+        <option
+          v-for="playlist in this.playlists"
+          v-on:click="addMusicToPlaylist(info, playlist)"
+          v-bind:key="playlist.id"
+        >{{ playlist.name }}</option>
+      </select>
     </span>
-  </router-link>
+  </div>
 </template>
 
 <script>
+import api from "@/script/api";
+
 export default {
   name: "SearchMusicItem",
-  props: ["musicData"]
+  props: ["musicData"],
+  methods: {
+    addMusicToPlaylist(music, playlist) {
+      api
+        .postPlaylistTrack(playlist.id, music)
+        .then(() => {
+          if (this.isInPlaylist) {
+            this.$parent.$parent.getPlaylists();
+            this.$emit("refresh");
+          }
+          this.$alert("Successfully added new song", playlist.name, "success");
+          this.isActive = !this.isActive;
+        })
+        .catch(() => {
+          alert("Error adding song");
+        });
+    },
+    openSelect: function() {
+      this.isActive = !this.isActive;
+    },
+    getPlaylist: function() {
+      api
+        .getUserPlaylists(api.userId())
+        .then(result => {
+          this.$data.playlists = result;
+        })
+        .catch(() => {
+          alert("Error getting playlist");
+        });
+    }
+  },
+  created() {
+    this.getPlaylist();
+  },
+  data: () => ({
+    playlists: [],
+    isActive: false
+  })
 };
 </script>
 
