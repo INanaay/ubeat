@@ -56,8 +56,9 @@
         <h1>{{ currentPlaylist.name }} playlist</h1>
       </div>
       <MusicList
-        v-bind:infos="currentPlaylist.formatMusicList()"
+        v-bind:infos="currentPlaylist.getTracks()"
         v-bind:playlist="currentPlaylist"
+        @refreshHigh="refresh"
       />
     </div>
   </div>
@@ -66,6 +67,7 @@
 <script>
 import MusicList from "@/components/MusicList.vue";
 import db from "@/script/db";
+import api from "@/script/api"
 
 export default {
   name: "Playlist",
@@ -75,21 +77,48 @@ export default {
   data() {
     return {
       fakeDB: db.getFakeDB(),
-      playlists: db.getPlaylists(),
+      playlists: [],
       songToAdd: {},
       musicListMode: false,
       currentPlaylist: ""
     };
   },
+  created() {
+    this.getPlaylists();
+  },
   methods: {
+    refresh: function() {
+      this.getPlaylists();
+    },
+    getPlaylists: function() {
+      api.getUserPlaylists(api.userId)
+        .then(result => {
+          this.playlists = result;
+          if (this.currentPlaylist && this.currentPlaylist.id) {
+            for (var i = 0; i < this.playlists.length; i++) {
+               if (this.playlists[i].id === this.currentPlaylist.id)
+                 this.currentPlaylist = this.playlists[i]
+            }
+          }
+        })
+        .catch(() => {
+          alert("Error getting playlist");
+        });
+    },
     addPlaylist: function() {
       this.$prompt("Playlist name", "", "Create playlist", "question")
         .then(result => {
           if (result.length > 10)
             this.$alert("Maxium playlist name length is 10", "Error", "error");
           else {
-            db.addPlaylist(result);
-            this.$alert("Successfully added playlist", result, "success");
+            api.postPlaylist(result)
+            .then(() => {
+              this.getPlaylists();
+              this.$alert("Successfully added playlist", result, "success");
+            })
+            .catch(() => {
+              alert("Error adding playlist")
+            });
           }
         })
         .catch(() => {});
@@ -101,12 +130,18 @@ export default {
           if (result.length > 10)
             this.$alert("Maxium playlist name length is 10", "Error", "error");
           else {
-            playlist.rename(result);
-            this.$alert(
-              'Successfully renamed "' + oldName + '" to "' + result + '"',
-              "Renamed",
-              "success"
-            );
+            api.putPlaylist(playlist, result)
+              .then(() => {
+                this.getPlaylists();
+                this.$alert(
+                  'Successfully renamed "' + oldName + '" to "' + result + '"',
+                  "Renamed",
+                  "success"
+                );
+              })
+              .catch(() => {
+                alert("Error editing playlist")
+              });;
           }
         })
         .catch(() => {});
@@ -122,11 +157,18 @@ export default {
         "question"
       ).then(result => {
         if (result) {
-          playlist.addMusic(song);
-          playlist.active = false;
-          this.$alert("Successfully added new song", playlist.name, "success");
+          api.postPlaylistTrack(playlist.id, song)
+            .then(() => {
+              this.getPlaylists();
+              this.$alert("Successfully added new song", playlist.name, "success");
+              playlist.active = false;
+            })
+            .catch(() => {
+            alert("Error adding song")
+          });
         }
-      });
+      })
+        .catch(() => {});
     },
     deletePlaylist: function(playlist) {
       this.$confirm(
@@ -136,12 +178,18 @@ export default {
       )
         .then(result => {
           if (result) {
-            db.removePlaylistBy(playlist.id);
-            this.$alert(
-              'Successfully deleted "' + playlist.name + '"',
-              "Deleted",
-              "success"
-            );
+            api.deletePlaylist(playlist.id)
+              .then(() => {
+                this.getPlaylists();
+                this.$alert(
+                  'Successfully deleted "' + playlist.name + '"',
+                  "Deleted",
+                  "success"
+                );
+              })
+              .catch(() => {
+              alert("Error deleting playlist")
+            });;
           }
         })
         .catch(() => {});

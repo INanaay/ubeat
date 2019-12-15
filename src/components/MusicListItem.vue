@@ -36,7 +36,7 @@
 
 <script>
 import PlayButton from "@/components/PlayButton.vue";
-import db from "@/script/db";
+import api from "@/script/api";
 
 export default {
   name: "MusicListItem",
@@ -74,18 +74,43 @@ export default {
     },
 
     getPlaylist: function() {
-      this.playlists = db.getPlaylists();
+      api.getUserPlaylists(api.userId)
+        .then(result => {
+          this.playlists = result;
+        })
+        .catch(() => {
+          alert("Error getting playlist");
+        });
     },
     openSelect: function() {
       this.isActive = !this.isActive;
     },
     addMusicToPlaylist(music, playlist) {
-      playlist.addMusic(music);
-      this.isActive = !this.isActive;
+      api.postPlaylistTrack(playlist.id, music)
+        .then(() => {
+          if (this.isInPlaylist) {
+            this.$parent.$parent.getPlaylists();
+            this.$emit('refresh')
+          }
+          this.$alert("Successfully added new song", playlist.name, "success");
+          this.isActive = !this.isActive;
+
+        })
+        .catch(() => {
+          alert("Error adding song")
+        });
     },
     deleteSong(index) {
-      this.$props.playlist.removeMusicByPosition(index);
-      this.myFunction("snackbar-delete");
+      api.deletePlaylistTrack(this.$props.playlist.id, this.$props.playlist.tracks[index].trackId)
+        .then(() => {
+          this.$parent.$parent.getPlaylists();
+          this.$alert("Successfully deleted song", this.$props.playlist.name, "success");
+          this.$emit('refresh')
+          this.myFunction("snackbar-delete");
+        })
+        .catch(() => {
+          alert("Error deleting song song")
+        });
     }
   },
   created() {

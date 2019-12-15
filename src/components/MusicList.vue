@@ -8,6 +8,7 @@
       v-bind:playlist="playlist"
       v-bind:artistName="info.artistName"
       v-bind:trackDuration="info.trackTimeMillis"
+      @refresh="refresh"
     />
   </div>
 </template>
@@ -22,7 +23,11 @@ export default {
   },
   props: ["infos", "playlist"],
   created() {
-    console.log(this.$props);
+  },
+  methods: {
+    refresh: function () {
+      this.$emit('refreshHigh');
+    }
   }
 };
 </script>

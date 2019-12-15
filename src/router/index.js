@@ -9,6 +9,7 @@ import Playlist from "@/components/Playlist";
 import Search from "../components/Search/Search";
 import Login from "@/components/Login";
 import Register from "../components/Register";
+import User from "@/components/User";
 
 Vue.use(Router);
 
@@ -58,6 +59,14 @@ export default new Router({
       path: "/playlist",
       name: "Playlist",
       component: Playlist,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/user/:id",
+      name: "User",
+      component: User,
       meta: {
         requiresAuth: true
       }
