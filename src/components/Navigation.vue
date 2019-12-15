@@ -34,6 +34,7 @@
           >User</router-link
         >
       </li>
+      <button v-on:click="showNavbar = false" id="nav-hide-btn"><span class="mdi mdi-window-close"></span></button>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
       <button id="nav-show-button" v-on:click="showNavbar = true">
@@ -48,7 +49,8 @@ import { store } from "../script/user";
 
 export default {
   data: () => ({
-    storeState: store.state
+    storeState: store.state,
+    showNavbar: window.innerWidth >= 992
   }),
   computed: {
     loggedIn() {
@@ -60,11 +62,6 @@ export default {
       store.DiscoUser();
       this.$router.push({ name: "Login" });
       location.reload();
-    },
-    showNavbar: function() {
-      return {
-        showNavbar: window.innerWidth >= 992
-      };
     },
     submit(event) {
       if (
@@ -117,7 +114,8 @@ export default {
   background-color: #222326;
   color: white;
   cursor: pointer;
-  float: right;
+  position: absolute;
+  left: 50%;
   margin-top: -13px;
   margin-right: -15px;
 }
