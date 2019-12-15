@@ -1,5 +1,5 @@
 <template>
-  <div class="user-preview">
+  <router-link  class="user-preview" v-bind:to="{path: '/user/' + peopleData.id, params: {isMe: false}}">
     <img src="../../assets/avatar2.png" alt="" />
     <span>
       {{ peopleData.name }}
@@ -7,7 +7,7 @@
       {{ peopleData.email }}
       <br />
     </span>
-  </div>
+  </router-link>
 </template>
 
 <script>
