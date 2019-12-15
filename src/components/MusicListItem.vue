@@ -74,7 +74,7 @@ export default {
     },
 
     getPlaylist: function() {
-      api.getUserPlaylists(api.userId)
+      api.getUserPlaylists(api.userId())
         .then(result => {
           this.playlists = result;
         })
