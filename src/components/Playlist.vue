@@ -91,7 +91,7 @@ export default {
       this.getPlaylists();
     },
     getPlaylists: function() {
-      api.getUserPlaylists(api.userId)
+      api.getUserPlaylists(api.userId())
         .then(result => {
           this.playlists = result;
           if (this.currentPlaylist && this.currentPlaylist.id) {

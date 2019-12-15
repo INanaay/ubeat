@@ -3,7 +3,13 @@
     <h1>Results for {{ this.searchTag }}</h1>
 
     <div v-if="results.artists.length !== 0">
-      <h1>Artists</h1>
+      <span>
+        <h1>
+          <img src="../../assets/singer.png" width="40px" height="40px" />
+          Artists
+        </h1>
+      </span>
+
       <div class="container">
         <artist-preview
           v-bind:key="'item' + i"
@@ -14,7 +20,12 @@
     </div>
 
     <div v-if="results.albums.length !== 0">
-      <h1>Albums</h1>
+      <span>
+        <h1>
+          <img src="../../assets/album.png" width="40px" height="40px" />
+          Albums
+        </h1>
+      </span>
       <div class="container">
         <album-preview
           v-bind:key="'item' + i"
@@ -25,7 +36,12 @@
     </div>
 
     <div v-if="results.tracks.length !== 0">
-      <h1>Musics</h1>
+      <span>
+        <h1>
+          <img src="../../assets/music.png" width="40px" height="40px" />
+          Music
+        </h1>
+      </span>
       <div class="container">
         <SearchMusicItem
           v-bind:key="'item' + i"
@@ -36,7 +52,12 @@
     </div>
 
     <div v-if="results.tracks.length !== 0">
-      <h1>User</h1>
+      <span>
+        <h1>
+          <img src="../../assets/avatar2.png" width="40px" height="40px" />
+          User
+        </h1>
+      </span>
       <div class="container">
         <SearchUserItem
           v-bind:key="'item' + i"

@@ -30,7 +30,7 @@
         {{ storeState.username }}
       </li>
       <li id="nav-user-settings" class="navbar navleft">
-        <router-link v-bind:to="{path: '/user/' + userId, params: {isMe: true}}">User</router-link>
+        <router-link v-bind:to="{ path: '/user/' + storeState.id }">User</router-link>
       </li>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
@@ -43,13 +43,10 @@
 
 <script>
 import { store } from "../script/user";
-import api from "@/script/api"
 
 export default {
   data: () => ({
-    storeState: store.state,
-    userName: "Jacques",
-    userId: api.userId,
+    storeState: store.state
   }),
   computed: {
     loggedIn() {

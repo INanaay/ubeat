@@ -7,7 +7,8 @@ const apiUrl = "http://ubeat.herokuapp.com/";
 export const store = {
   state: {
     username: Cookies.get("name") || null,
-    token: Cookies.get("token") || null
+    token: Cookies.get("token") || null,
+    id: Cookies.get("id") || null
   },
   loggedIn() {
     return this.state.token !== null;
@@ -25,6 +26,8 @@ export const store = {
     }).then(response => {
       this.state.username = response.data.name;
       this.state.token = response.data.token;
+      this.state.id = response.data.id;
+      Cookies.set("id", this.state.id);
       Cookies.set("name", this.state.username);
       Cookies.set("token", this.state.token);
     });
@@ -45,6 +48,7 @@ export const store = {
     });
   },
   DiscoUser() {
+    Cookies.remove("id");
     Cookies.remove("name");
     Cookies.remove("token");
   }
