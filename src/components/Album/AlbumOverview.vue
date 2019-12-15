@@ -35,7 +35,6 @@ export default {
           for (let index = 0; index < response.length; index++) {
             this.albums.push(response[index][0]);
           }
-          console.log(this.albums);
         })
         .catch(error => {
           alert(error);

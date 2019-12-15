@@ -39,13 +39,12 @@ export default {
   },
   methods: {
     checkIfFollowing: function() {
-        // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-unused-vars
       for (const user of this.userData.following) {
         if (user.id === this.peopleData.id) this.isFollowing = true;
       }
     },
     follow: function() {
-      console.log("his id = " + this.peopleData.id);
       api
         .postFollow(this.peopleData.id)
         .then(() => {

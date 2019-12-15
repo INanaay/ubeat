@@ -67,7 +67,6 @@ export default {
       };
     },
     submit(event) {
-      console.log(this.$route);
       if (
         this.$route.params.tag &&
         this.$route.params.tag === event.srcElement.value

@@ -236,7 +236,6 @@ export default {
     openPlaylist: function(playlist) {
       this.currentPlaylist = playlist;
       this.isActive = true;
-      console.log(this.currentPlaylist.getTracks());
     },
     getUserPlaylist: function() {
       api

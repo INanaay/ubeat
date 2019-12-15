@@ -65,10 +65,8 @@ export default {
           if (err) {
             alert(err);
           } else {
-            console.log(data);
             this.summary = data.summary;
           }
-          console.log(this.summary);
         }
       );
     }
