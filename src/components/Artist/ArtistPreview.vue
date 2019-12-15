@@ -45,8 +45,8 @@ export default {
 
 @media screen and (max-width: 992px) {
   .artist-preview img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
 
   .artist-preview span {
@@ -56,8 +56,8 @@ export default {
 
 @media screen and (max-width: 600px) {
   .artist-preview img {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
   }
 
   .artist-preview span {

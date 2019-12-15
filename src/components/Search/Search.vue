@@ -138,6 +138,6 @@ export default {
   flex-direction: row;
   padding: 10px;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 </style>
