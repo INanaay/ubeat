@@ -218,6 +218,23 @@ export default {
         return error;
       });
   },
+  putMusicPlaylist(playlist, song) {
+    playlist.tracks = playlist.tracks.concat(song);
+    const url = apiUrl + "playlists/" + playlist.id;
+    return axios
+      .put(url, playlist, {
+        headers: {
+          Authorization: Cookies.get("token"),
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        return error;
+      });
+  },
   deletePlaylist(id) {
     const url = apiUrl + "playlists/" + id;
     return axios

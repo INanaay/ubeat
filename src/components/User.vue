@@ -85,7 +85,7 @@
 .gravatarImg {
   position: absolute;
   margin-left: 78vw;
-  margin-top: -3vw;
+  margin-top: -5vw;
   border: 2px solid white;
   border-radius: 200px;
   overflow: hidden;
@@ -141,8 +141,8 @@ img {
   background-color: #2980b9;
   border-color: #2980b9;
   border-radius: 10px;
-  margin-left: 62vw;
-  margin-top: 1vw;
+  margin-left: 65vw;
+  margin-top: -2vw;
   font-size: 2vw;
   position: absolute;
 }
@@ -333,7 +333,7 @@ export default {
         return (
           "https://www.gravatar.com/avatar/" +
           api.getGravatarImage(email) +
-          "?s=350&d=robohash"
+          "?s=280&d=robohash"
         );
       else
         return (
