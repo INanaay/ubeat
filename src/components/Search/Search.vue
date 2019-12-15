@@ -63,6 +63,7 @@
           v-bind:key="'item' + i"
           v-for="(item, i) in results.people"
           v-bind:peopleData="item"
+          v-bind:userData="userdata"
         />
       </div>
     </div>
@@ -136,7 +137,8 @@ export default {
   },
   data: () => ({
     searchTag: "",
-    results: { tracks: [], albums: [], artists: [], people: [] }
+    results: { tracks: [], albums: [], artists: [], people: [] },
+    userdata: null
   }),
   watch: {
     // eslint-disable-next-line no-unused-vars
@@ -147,6 +149,14 @@ export default {
     }
   },
   created() {
+    api
+      .getUserData(api.userId())
+      .then(result => {
+        this.userdata = result;
+      })
+      .catch(E => {
+        console.log(E);
+      });
     this.setSearchTag();
     this.search();
   }
