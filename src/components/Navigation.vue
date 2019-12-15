@@ -30,7 +30,9 @@
         {{ storeState.username }}
       </li>
       <li id="nav-user-settings" class="navbar navleft">
-        <router-link v-bind:to="{ path: '/user/' + storeState.id }">User</router-link>
+        <router-link v-bind:to="{ path: '/user/' + storeState.id }"
+          >User</router-link
+        >
       </li>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
@@ -65,6 +67,12 @@ export default {
       };
     },
     submit(event) {
+      console.log(this.$route);
+      if (
+        this.$route.params.tag &&
+        this.$route.params.tag === event.srcElement.value
+      )
+        return;
       this.$router.push({
         name: "Search",
         params: { tag: event.srcElement.value }
