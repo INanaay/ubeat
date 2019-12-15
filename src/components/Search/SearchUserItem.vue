@@ -12,8 +12,15 @@
         <br />
       </span>
     </router-link>
-    <button class="follow" v-on:click="follow()">
+    <button class="followButton" v-if="!this.isFollowing" v-on:click="follow()">
       Follow
+    </button>
+    <button
+      class="followButton"
+      v-if="this.isFollowing"
+      v-on:click="unfollow()"
+    >
+      Unfollow
     </button>
   </div>
 </template>
@@ -23,24 +30,28 @@ import api from "@/script/api";
 
 export default {
   name: "SearchUsetrItem",
-  props: ["peopleData"],
+  props: ["peopleData", "userData"],
+  data: () => ({
+    isFollowing: false
+  }),
+  created() {
+    this.checkIfFollowing();
+  },
   methods: {
-    isFollowing: function() {
-      // eslint-disable-next-line no-unused-vars
-      for (const user of this.connectUserData.following) {
-        if (user.id === this.id) {
-          return true;
-        }
+    checkIfFollowing: function() {
+        // eslint-disable-next-line no-unused-vars
+      for (const user of this.userData.following) {
+        if (user.id === this.peopleData.id) this.isFollowing = true;
       }
-      return false;
     },
     follow: function() {
+      console.log("his id = " + this.peopleData.id);
       api
-        .postFollow(this.id)
+        .postFollow(this.peopleData.id)
         .then(() => {
           this.isFollowing = !this.isFollowing;
           this.$alert(
-            "Successfully followed " + this.userData.name,
+            "Successfully followed " + this.peopleData.name,
             "Follow",
             "success"
           );
@@ -51,11 +62,11 @@ export default {
     },
     unfollow: function() {
       api
-        .deleteFollow(this.id)
+        .deleteFollow(this.peopleData.id)
         .then(() => {
           this.isFollowing = !this.isFollowing;
           this.$alert(
-            "Successfully unfollowed " + this.userData.name,
+            "Successfully unfollowed " + this.peopleData.name,
             "UnFollow",
             "success"
           );
