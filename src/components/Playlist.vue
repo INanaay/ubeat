@@ -51,7 +51,7 @@
 
 <script>
 import MusicList from "@/components/MusicList.vue";
-import api from "@/script/api"
+import api from "@/script/api";
 
 export default {
   name: "Playlist",
@@ -74,13 +74,14 @@ export default {
       this.getPlaylists();
     },
     getPlaylists: function() {
-      api.getUserPlaylists(api.userId())
+      api
+        .getUserPlaylists(api.userId())
         .then(result => {
           this.playlists = result;
           if (this.currentPlaylist && this.currentPlaylist.id) {
             for (var i = 0; i < this.playlists.length; i++) {
               if (this.playlists[i].id === this.currentPlaylist.id)
-                this.currentPlaylist = this.playlists[i]
+                this.currentPlaylist = this.playlists[i];
             }
           }
         })
@@ -94,14 +95,15 @@ export default {
           if (result.length > 10)
             this.$alert("Maxium playlist name length is 10", "Error", "error");
           else {
-            api.postPlaylist(result)
-            .then(() => {
-              this.getPlaylists();
-              this.$alert("Successfully added playlist", result, "success");
-            })
-            .catch(() => {
-              alert("Error adding playlist")
-            });
+            api
+              .postPlaylist(result)
+              .then(() => {
+                this.getPlaylists();
+                this.$alert("Successfully added playlist", result, "success");
+              })
+              .catch(() => {
+                alert("Error adding playlist");
+              });
           }
         })
         .catch(() => {});
@@ -113,7 +115,8 @@ export default {
           if (result.length > 10)
             this.$alert("Maxium playlist name length is 10", "Error", "error");
           else {
-            api.putPlaylist(playlist, result)
+            api
+              .putPlaylist(playlist, result)
               .then(() => {
                 this.getPlaylists();
                 this.$alert(
@@ -123,8 +126,8 @@ export default {
                 );
               })
               .catch(() => {
-                alert("Error editing playlist")
-              });;
+                alert("Error editing playlist");
+              });
           }
         })
         .catch(() => {});
@@ -137,7 +140,8 @@ export default {
       )
         .then(result => {
           if (result) {
-            api.deletePlaylist(playlist.id)
+            api
+              .deletePlaylist(playlist.id)
               .then(() => {
                 this.getPlaylists();
                 this.$alert(
@@ -147,8 +151,8 @@ export default {
                 );
               })
               .catch(() => {
-              alert("Error deleting playlist")
-            });;
+                alert("Error deleting playlist");
+              });
           }
         })
         .catch(() => {});

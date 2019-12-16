@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Artists</h1>
-
     <div id="artist-container">
       <artist-preview
         v-bind:key="'item' + i"

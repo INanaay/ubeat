@@ -1,3 +1,8 @@
+# Utilisateur pour le Livrable 3
+
+- email: mouton.plat@gmail.com
+- mot de passe: 1111
+
 # vue-starter
 
 Kit de départ préconfiguré utilisant [vue-cli](https://cli.vuejs.org/), [ESLint](https://eslint.org/) avec [Prettier](https://prettier.io/) et [Jest](https://jestjs.io/).

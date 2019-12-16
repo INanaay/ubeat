@@ -63,10 +63,11 @@ export default {
       }
       document.getElementById("passw").value = "";
       document.getElementById("email").value = "";
-      // eslint-disable-next-line no-unused-vars
-      store.loginUser(this.email, this.passw).then(response => {
-          this.$router.push({ name: "Home" }).catch(() => {
-          });
+      store
+        .loginUser(this.email, this.passw)
+        // eslint-disable-next-line no-unused-vars
+        .then(response => {
+          this.$router.push({ name: "Home" }).catch(() => {});
         })
         // eslint-disable-next-line no-unused-vars
         .catch(error => {
