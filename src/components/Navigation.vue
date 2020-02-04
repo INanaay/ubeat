@@ -34,7 +34,9 @@
           >User</router-link
         >
       </li>
-      <button v-on:click="showNavbar = false" id="nav-hide-btn"><span class="mdi mdi-window-close"></span></button>
+      <button v-on:click="showNavbar = false" id="nav-hide-btn">
+        <span class="mdi mdi-window-close"></span>
+      </button>
     </ul>
     <div id="nav-show-bar" v-show="!showNavbar">
       <button id="nav-show-button" v-on:click="showNavbar = true">
@@ -60,8 +62,7 @@ export default {
   methods: {
     DisconnectUser: function() {
       store.DiscoUser();
-      this.$router.push({ name: "Login" }).catch(() => {
-      });
+      this.$router.push({ name: "Login" }).catch(() => {});
       location.reload();
     },
     submit(event) {
@@ -70,11 +71,12 @@ export default {
         this.$route.params.tag === event.srcElement.value
       )
         return;
-      this.$router.push({
-        name: "Search",
-        params: { tag: event.srcElement.value }
-      }).catch(() => {
-      });
+      this.$router
+        .push({
+          name: "Search",
+          params: { tag: event.srcElement.value }
+        })
+        .catch(() => {});
     }
   }
 };

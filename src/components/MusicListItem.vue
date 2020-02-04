@@ -74,7 +74,8 @@ export default {
     },
 
     getPlaylist: function() {
-      api.getUserPlaylists(api.userId())
+      api
+        .getUserPlaylists(api.userId())
         .then(result => {
           this.playlists = result;
         })
@@ -86,30 +87,38 @@ export default {
       this.isActive = !this.isActive;
     },
     addMusicToPlaylist(music, playlist) {
-      api.postPlaylistTrack(playlist.id, music)
+      api
+        .postPlaylistTrack(playlist.id, music)
         .then(() => {
           if (this.isInPlaylist) {
             this.$parent.$parent.getPlaylists();
-            this.$emit('refresh')
+            this.$emit("refresh");
           }
           this.$alert("Successfully added new song", playlist.name, "success");
           this.isActive = !this.isActive;
-
         })
         .catch(() => {
-          alert("Error adding song")
+          alert("Error adding song");
         });
     },
     deleteSong(index) {
-      api.deletePlaylistTrack(this.$props.playlist.id, this.$props.playlist.tracks[index].trackId)
+      api
+        .deletePlaylistTrack(
+          this.$props.playlist.id,
+          this.$props.playlist.tracks[index].trackId
+        )
         .then(() => {
           this.$parent.$parent.getPlaylists();
-          this.$alert("Successfully deleted song", this.$props.playlist.name, "success");
-          this.$emit('refresh')
+          this.$alert(
+            "Successfully deleted song",
+            this.$props.playlist.name,
+            "success"
+          );
+          this.$emit("refresh");
           this.myFunction("snackbar-delete");
         })
         .catch(() => {
-          alert("Error deleting song song")
+          alert("Error deleting song song");
         });
     }
   },

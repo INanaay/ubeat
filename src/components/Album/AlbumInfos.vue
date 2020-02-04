@@ -62,9 +62,14 @@ export default {
   }),
   methods: {
     addAllMusic: function(playlist) {
-      api.putMusicPlaylist(playlist, this.$props.infos)
+      api
+        .putMusicPlaylist(playlist, this.$props.infos)
         .then(() => {
-          this.$alert("Successfully added song to the play", "Add songs", "success");
+          this.$alert(
+            "Successfully added song to the play",
+            "Add songs",
+            "success"
+          );
           this.isActive = !this.isActive;
         })
         .catch(() => {
@@ -75,7 +80,8 @@ export default {
       this.isActive = !this.isActive;
     },
     getPlaylist: function() {
-      api.getUserPlaylists(api.userId())
+      api
+        .getUserPlaylists(api.userId())
         .then(result => {
           this.playlists = result;
         })

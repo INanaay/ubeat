@@ -22,11 +22,10 @@ export default {
     MusicListItem
   },
   props: ["infos", "playlist"],
-  created() {
-  },
+  created() {},
   methods: {
-    refresh: function () {
-      this.$emit('refreshHigh');
+    refresh: function() {
+      this.$emit("refreshHigh");
     }
   }
 };
